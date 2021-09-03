@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataLocalService } from './services/data-local.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private dataLocal: DataLocalService) {
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.changeDarkMode();
+  }
+
+  async changeDarkMode(){
+
+    const darkMode = await this.dataLocal.recuperarModoOscuro()
+    document.body.classList.add(darkMode ? 'dark' : 'light')
+     }
+    
 }
