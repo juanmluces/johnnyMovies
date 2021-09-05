@@ -14,6 +14,7 @@ export class Tab3Page implements OnInit {
   generos: Genre[];
   favoritoGenero: any[] = []
   mostrarGeneros: boolean = true
+  modal: HTMLIonModalElement
 
   constructor(private dataLocal: DataLocalService, private moviesService: MoviesService) {}
 
@@ -42,6 +43,19 @@ export class Tab3Page implements OnInit {
         })
       })
     })
+  }
+
+  getModal(event){
+    this.modal = event;   
+  }
+
+  canDeactivate(){    
+    if(this.modal){
+       this.modal.dismiss(); 
+       this.modal = undefined;
+       return false
+      }
+    return true
   }
 
 }

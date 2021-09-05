@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Pelicula } from 'src/app/interfaces/interfaces';
 import { DetalleComponent } from '../detalle/detalle.component';
@@ -17,6 +17,7 @@ export class SlideshowBackdropComponent implements OnInit {
   }
 
   @Input() peliculas: Pelicula[] = []
+  @Output() modalCreated = new EventEmitter<HTMLIonModalElement>()
 
   constructor(private modalCtrl: ModalController) { }
 
@@ -31,6 +32,7 @@ export class SlideshowBackdropComponent implements OnInit {
     });
 
     modal.present()
+    this.modalCreated.emit(modal)
   }
 
 }

@@ -18,6 +18,7 @@ export class AppComponent {
   }
   
   async initializeApp() {
+    
     this.changeDarkMode();
     const lang = await this.dataLocal.getLang() || this.translate.getDefaultLang()
     this.translate.use(lang)

@@ -19,6 +19,12 @@ export class TabSettingsPage implements OnInit {
   async ngOnInit(){
     
     [this.darkMode, this.mostrarGenero] = await Promise.all([this.dataLocal.recuperarModoOscuro(), this.dataLocal.recuperarMostrarGeneros()])
+    if(this.darkMode){
+      document.body.classList.remove('light')
+      document.body.classList.add('dark')
+    }
+
+    
     // this.darkMode = await this.dataLocal.recuperarModoOscuro()
     // this.mostrarGenero = await this.dataLocal.recuperarMostrarGeneros()
 
@@ -34,9 +40,15 @@ export class TabSettingsPage implements OnInit {
   }
 
   changeMode(){
- 
-    document.body.classList.toggle('dark');
-    document.body.classList.toggle('light');
+
+    if(this.darkMode){
+      document.body.classList.remove('light')
+      document.body.classList.add('dark')
+    } else{
+      document.body.classList.add('light')
+      document.body.classList.remove('dark')
+    }
+
     this.dataLocal.guardarModoOscuro(this.darkMode)
     
   }

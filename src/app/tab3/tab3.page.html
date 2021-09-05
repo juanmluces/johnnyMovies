@@ -11,7 +11,7 @@
  
     
  
-    <app-slideshow-poster *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
+    <app-slideshow-poster (modalCreated)="getModal($event)" *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
 
   <ng-container *ngIf="mostrarGeneros">
 
@@ -25,7 +25,7 @@
         </ion-row>
       </ion-grid>
       
-      <app-slideshow-poster (modalDismissed)="ionViewWillEnter()" [peliculas]="pelicula.pelis"></app-slideshow-poster>
+      <app-slideshow-poster  (modalCreated)="getModal($event)" (modalDismissed)="ionViewWillEnter()" [peliculas]="pelicula.pelis"></app-slideshow-poster>
       
     </div>
   </ng-container>

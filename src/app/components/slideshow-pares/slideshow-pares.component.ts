@@ -19,6 +19,7 @@ export class SlideshowParesComponent implements OnInit {
 
   @Input() peliculas: Pelicula[] = []
   @Output() cargarMas = new EventEmitter();
+  @Output() modalCreated = new EventEmitter<HTMLIonModalElement>()
 
 
   constructor(private modalCtrl: ModalController) { }
@@ -37,6 +38,7 @@ export class SlideshowParesComponent implements OnInit {
     });
 
     modal.present()
+    this.modalCreated.emit(modal)
   }
 
 }

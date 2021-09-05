@@ -16,6 +16,7 @@ export class Tab2Page implements OnInit {
   textoBuscar ='';
   peliculas: Pelicula[] = []
   buscando: boolean = false;
+  modal: HTMLIonModalElement
 
   constructor(private moviesService: MoviesService, private modalCtrl: ModalController) {}
 
@@ -72,8 +73,21 @@ export class Tab2Page implements OnInit {
       }
     });
 
+    this.modal = modal
     modal.present()
   }
+
+  canDeactivate(){    
+    if(this.modal){
+       this.modal.dismiss(); 
+       this.modal = undefined;
+       return false
+      }
+    return true
+  }
+
+
+
 
 
 }

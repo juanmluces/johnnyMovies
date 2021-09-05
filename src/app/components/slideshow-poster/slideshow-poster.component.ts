@@ -19,6 +19,7 @@ export class SlideshowPosterComponent implements OnInit {
 
   @Input() peliculas: PeliculaDetalle[] = []
   @Output() modalDismissed = new EventEmitter()
+  @Output() modalCreated = new EventEmitter<HTMLIonModalElement>()
 
 
   constructor(private modalCtrl: ModalController) { }
@@ -34,6 +35,7 @@ export class SlideshowPosterComponent implements OnInit {
     });
 
     modal.present()
+    this.modalCreated.emit(modal)
     const result = await modal.onDidDismiss()
     if(result.data) this.modalDismissed.emit()
    

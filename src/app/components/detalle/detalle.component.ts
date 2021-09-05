@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { Cast, Crew, PeliculaDetalle } from 'src/app/interfaces/interfaces';
 import { DataLocalService } from 'src/app/services/data-local.service';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -28,16 +28,7 @@ export class DetalleComponent implements OnInit {
     spaceBetween: -5
   }
 
-  constructor(
-    private moviesService: MoviesService, 
-    private modalCtrl: ModalController, 
-    private dataLocal: DataLocalService,
-    private platform: Platform
-    ) {
-      this.platform.backButton.subscribeWithPriority(10, () => {
-        this.modalCtrl.dismiss(true)
-      });
-     }
+  constructor(private moviesService: MoviesService, private modalCtrl: ModalController, private dataLocal: DataLocalService) { }
 
    ngOnInit() {
     

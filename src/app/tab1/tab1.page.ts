@@ -11,6 +11,7 @@ export class Tab1Page implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
   populares: Pelicula[]= [];
+  modal: HTMLIonModalElement
 
 
   constructor(
@@ -36,6 +37,19 @@ export class Tab1Page implements OnInit {
       const arrTemp = [ ...this.populares, ...resp.results]
       this.populares = arrTemp
     })
+  }
+
+  getModal(event){
+    this.modal = event;   
+  }
+
+  canDeactivate(){    
+    if(this.modal){
+       this.modal.dismiss(); 
+       this.modal = undefined;
+       return false
+      }
+    return true
   }
 
 }
