@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Genre, PeliculaDetalle } from '../interfaces/interfaces';
 import { DataLocalService } from '../services/data-local.service';
 import { MoviesService } from '../services/movies.service';
@@ -15,8 +16,9 @@ export class Tab3Page implements OnInit {
   favoritoGenero: any[] = []
   mostrarGeneros: boolean = true
   modal: HTMLIonModalElement
+  
 
-  constructor(private dataLocal: DataLocalService, private moviesService: MoviesService) {}
+  constructor(private dataLocal: DataLocalService, private moviesService: MoviesService, private router: Router) {}
 
   async ngOnInit(){
     this.mostrarGeneros = await this.dataLocal.recuperarMostrarGeneros()
@@ -46,7 +48,12 @@ export class Tab3Page implements OnInit {
   }
 
   getModal(event){
-    this.modal = event;   
+    this.router.navigateByUrl('/tabs/tab1').then( () => {
+      this.router.navigateByUrl('/tabs/tab3').then( ()=> {
+        this.modal = event;   
+
+      })
+    })   
   }
 
   canDeactivate(){    

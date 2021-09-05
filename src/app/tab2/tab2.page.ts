@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../components/detalle/detalle.component';
 import { Pelicula } from '../interfaces/interfaces';
@@ -18,7 +19,7 @@ export class Tab2Page implements OnInit {
   buscando: boolean = false;
   modal: HTMLIonModalElement
 
-  constructor(private moviesService: MoviesService, private modalCtrl: ModalController) {}
+  constructor(private moviesService: MoviesService, private modalCtrl: ModalController, private router: Router) {}
 
   async ngOnInit(){
  
@@ -73,8 +74,14 @@ export class Tab2Page implements OnInit {
       }
     });
 
-    this.modal = modal
-    modal.present()
+    this.router.navigateByUrl('/tabs/tab1').then( () => {
+      this.router.navigateByUrl('/tabs/tab2').then( ()=> {
+      
+        this.modal = modal
+        modal.present()
+
+      })
+    })
   }
 
   canDeactivate(){    

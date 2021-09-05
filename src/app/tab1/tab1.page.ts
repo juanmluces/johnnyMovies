@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pelicula, RespuestaMDB } from '../interfaces/interfaces';
 import { MoviesService } from '../services/movies.service';
 
@@ -15,7 +16,8 @@ export class Tab1Page implements OnInit {
 
 
   constructor(
-    private moviesService: MoviesService
+    private moviesService: MoviesService,
+    private router: Router
   ) {}
 
   ngOnInit(){
@@ -39,8 +41,13 @@ export class Tab1Page implements OnInit {
     })
   }
 
-  getModal(event){
-    this.modal = event;   
+   getModal(event){
+    this.router.navigateByUrl('/tabs/tab2').then( () => {
+      this.router.navigateByUrl('/tabs/tab1').then( ()=> {
+        this.modal = event;   
+
+      })
+    })
   }
 
   canDeactivate(){    
