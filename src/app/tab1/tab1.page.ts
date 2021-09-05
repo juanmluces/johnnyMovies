@@ -42,12 +42,12 @@ export class Tab1Page implements OnInit {
   }
 
    getModal(event){
-    this.router.navigateByUrl('/tabs/tab2').then( () => {
-      this.router.navigateByUrl('/tabs/tab1').then( ()=> {
+    // this.router.navigateByUrl('/tabs/tab2').then( () => {
+    //   this.router.navigateByUrl('/tabs/tab1').then( ()=> {
         this.modal = event;   
 
-      })
-    })
+      // })
+    // })
   }
 
   canDeactivate(){    

@@ -48,12 +48,12 @@ export class Tab3Page implements OnInit {
   }
 
   getModal(event){
-    this.router.navigateByUrl('/tabs/tab1').then( () => {
-      this.router.navigateByUrl('/tabs/tab3').then( ()=> {
+    // this.router.navigateByUrl('/tabs/tab1').then( () => {
+    //   this.router.navigateByUrl('/tabs/tab3').then( ()=> {
         this.modal = event;   
 
-      })
-    })   
+      // })
+    // })   
   }
 
   canDeactivate(){    

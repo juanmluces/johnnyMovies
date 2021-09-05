@@ -74,14 +74,14 @@ export class Tab2Page implements OnInit {
       }
     });
 
-    this.router.navigateByUrl('/tabs/tab1').then( () => {
-      this.router.navigateByUrl('/tabs/tab2').then( ()=> {
+    // this.router.navigateByUrl('/tabs/tab1').then( () => {
+    //   this.router.navigateByUrl('/tabs/tab2').then( ()=> {
       
         this.modal = modal
         modal.present()
 
-      })
-    })
+      // })
+    // })
   }
 
   canDeactivate(){    
