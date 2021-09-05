@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-     Buscar Película
+     {{'tab2.searchMovie' |translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,7 @@
   
   
   
-  <ion-searchbar  placeholder="Buscar película"
+  <ion-searchbar  [placeholder]="'tab2.search' | translate"
                   animated
                   debounce="400"
                   [value]="textoBuscar"
@@ -29,7 +29,7 @@
 
 <ion-list *ngIf="peliculas.length === 0">
   <ion-list-header>
-    <ion-label>Ideas</ion-label>
+    <ion-label>{{'tab2.ideas' | translate}}</ion-label>
   </ion-list-header>
   <ion-item  (click)="textoBuscar = idea" *ngFor="let idea of ideas">
     <ion-label color="primary">{{idea}}</ion-label>

@@ -8,6 +8,7 @@ import { TabSettingsPageRoutingModule } from './tab-settings-routing.module';
 
 import { TabSettingsPage } from './tab-settings.page';
 import { ComponentsModule } from '../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     IonicModule,
     TabSettingsPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [TabSettingsPage]
 })

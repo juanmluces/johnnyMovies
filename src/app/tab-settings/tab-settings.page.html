@@ -2,7 +2,7 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-title>Ajustes</ion-title>
+    <ion-title>{{'tab-settings.settings' |translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +11,24 @@
   <ion-list>
     <ion-item>
       <ion-label>
-        Modo Oscuro
+        {{'tab-settings.darkMode' |translate}}
       </ion-label>
       <ion-toggle slot="end" [(ngModel)]="darkMode" (ionChange)="changeMode()"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>
-        Mostrar favoritos por genero
+        {{'tab-settings.showFavGender' | translate}}
       </ion-label>
       <ion-toggle slot="end" [(ngModel)]="mostrarGenero" (ionChange)="changeShowGenero()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{'tab-settings.changeLang' | translate}}
+      </ion-label>
+    <ion-select [value]="translate.currentLang" (ionChange)="changeLang($event)" [placeholder]="'tab-settings.selectLang' | translate" okText="Ok" [cancelText]="'tab-settings.cancel' | translate">
+      <ion-select-option value="es">{{'tab-settings.spanish' |translate}}</ion-select-option>
+      <ion-select-option value="en">{{'tab-settings.english' |translate}}</ion-select-option>
+    </ion-select>
     </ion-item>
   </ion-list>
 

@@ -103,6 +103,16 @@ export class DataLocalService {
     return mostrarGeneros
   }
 
+  async getLang(){
+    if(!this._storage) await this.init()
+    const lang = await this._storage.get('lang')
+    return lang
+  }
+
+  guardarIdioma(lang: string){
+    this._storage.set('lang', lang)
+  }
+
 
 
 }

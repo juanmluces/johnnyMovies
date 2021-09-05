@@ -1,0 +1,39 @@
+{
+    "tabs": {
+        "movies": "Movies",
+        "search": "Search",
+        "favorite": "Favorite",
+        "settings": "Settings"
+    },"tab1": {
+        "newMovies": "New Movies",
+        "inTheaters": "In theaters",
+        "popular": "Popular"
+    },
+    "tab2":{
+        "searchMovie": "Search Movie",
+        "search": "Search",
+        "ideas": "Ideas"
+    },
+    "tab3": {
+        "favorite": "Favorite"
+    },
+    "detalle": {
+        "rating": "Rating",
+        "votes": "Votes",
+        "readMore": "Read more!",
+        "directors": "Directors",
+        "actors": "Actors",
+        "goBack": "Go back",
+        "favorite": "Favorite"
+    },
+    "tab-settings": {
+        "settings": "Settings",
+        "darkMode": "Dark Mode",
+        "showFavGender": "Show Favorite by genres",
+        "changeLang": "Change language",
+        "spanish": "Spanish",
+        "english": "English",
+        "selectLang":"Select language",
+        "cancel": "Cancel"
+    }
+}

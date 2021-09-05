@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DataLocalService } from './services/data-local.service';
 
 @Component({
@@ -7,12 +8,19 @@ import { DataLocalService } from './services/data-local.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private dataLocal: DataLocalService) {
+  constructor(
+    private dataLocal: DataLocalService, 
+    private translate: TranslateService
+    ) {
     this.initializeApp();
+    this.translate.setDefaultLang('es')
+    
   }
-
-  initializeApp() {
+  
+  async initializeApp() {
     this.changeDarkMode();
+    const lang = await this.dataLocal.getLang() || this.translate.getDefaultLang()
+    this.translate.use(lang)
   }
 
   async changeDarkMode(){

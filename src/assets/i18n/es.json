@@ -1,0 +1,40 @@
+{
+    "tabs": {
+        "movies": "Películas",
+        "search": "Buscar",
+        "favorite": "Favoritas",
+        "settings": "Ajustes"
+    },
+    "tab1":{
+        "newMovies": "Películas Nuevas",
+        "inTheaters": "Cartelera",
+        "popular": "Populares"
+    },
+    "tab2":{
+        "searchMovie": "Buscar Película",
+        "search": "Buscar",
+        "ideas": "Ideas"
+    },
+    "tab3": {
+        "favorite": "Favoritas"
+    },
+    "detalle": {
+        "rating": "Rating",
+        "votes": "Votos",
+        "readMore": "Leer mas!",
+        "directors": "Directores",
+        "actors": "Actores",
+        "goBack": "Volver",
+        "favorite": "Favorita"
+    },
+    "tab-settings": {
+        "settings": "Ajustes",
+        "darkMode": "Modo Oscuro",
+        "showFavGender": "Mostrar favoritos por género",
+        "changeLang": "Cambiar Idioma",
+        "spanish": "Español",
+        "english": "Inglés",
+        "selectLang":"Elige un idioma",
+        "cancel": "Cacelar"
+    }
+}

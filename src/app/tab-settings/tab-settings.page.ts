@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DataLocalService } from '../services/data-local.service';
+import { MoviesService } from '../services/movies.service';
 
 @Component({
   selector: 'app-tab-settings',
@@ -9,15 +11,26 @@ import { DataLocalService } from '../services/data-local.service';
 export class TabSettingsPage implements OnInit {
 
   darkMode: boolean = false;
-  mostrarGenero: boolean = true;
+  mostrarGenero: boolean = false;
 
-  constructor(private dataLocal: DataLocalService) {
+  constructor(private dataLocal: DataLocalService, public translate: TranslateService) {
   }
   
   async ngOnInit(){
-    this.darkMode = await this.dataLocal.recuperarModoOscuro()
-    this.mostrarGenero = await this.dataLocal.recuperarMostrarGeneros()
+    
+    [this.darkMode, this.mostrarGenero] = await Promise.all([this.dataLocal.recuperarModoOscuro(), this.dataLocal.recuperarMostrarGeneros()])
+    // this.darkMode = await this.dataLocal.recuperarModoOscuro()
+    // this.mostrarGenero = await this.dataLocal.recuperarMostrarGeneros()
 
+  }
+  
+
+  
+
+  changeLang(event){
+    const value: string = event.detail.value;
+    this.dataLocal.guardarIdioma(value)
+    this.translate.use(value)
   }
 
   changeMode(){

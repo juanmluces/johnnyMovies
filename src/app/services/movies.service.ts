@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { Genre, PeliculaDetalle, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
 
@@ -16,13 +17,15 @@ export class MoviesService {
   private generos: Genre[] = [];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private translate: TranslateService
   ) { }
 
   private ejecutarQuery<T>(query: string){
-
+    
+    const lang = this.translate.currentLang
     query = URL + query;
-    query += `&api_key=${apiKey}&language=es&include_image_language=es`;
+    query += `&api_key=${apiKey}&language=${lang}&include_image_language=${lang}`;
     return this.http.get<T>(query)
 
   }
@@ -70,7 +73,6 @@ export class MoviesService {
       
           this.ejecutarQuery(`genre/movie/list?a=1`).subscribe(resp => {
             this.generos = resp['genres']
-            console.log(this.generos);
             resolve(this.generos)
           })
 
