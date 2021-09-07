@@ -61,7 +61,7 @@ export class DetalleComponent implements OnInit {
      
        
         this.actores = resp.cast;
-        if(resp.crew) this.director = this.getDirectors(resp.crew)[0]
+        if(resp.crew) this.director = this.getDirectors(resp.crew)
         
         
         
@@ -76,7 +76,7 @@ export class DetalleComponent implements OnInit {
     crew.forEach(member => {
       if(member.department == "Directing") dir.push(member.name)
     })
-    return dir
+    return dir[0]
   }
 
   regresar(){
