@@ -13,7 +13,7 @@ export class DetalleComponent implements OnInit {
 
   @Input()id;
   pelicula: PeliculaDetalle = {};
-  directors: string[] = []
+  director:  string = '';
   oculto = 150;
   estrella = 'star-outline'
   actores: Cast[] = [];
@@ -61,7 +61,7 @@ export class DetalleComponent implements OnInit {
      
        
         this.actores = resp.cast;
-        if(resp.crew) this.directors = this.getDirectors(resp.crew)
+        if(resp.crew) this.director = this.getDirectors(resp.crew)[0]
         
         
         
