@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Cast, Crew, PeliculaDetalle } from 'src/app/interfaces/interfaces';
+import { Cast, Crew, PeliculaDetalle, Video } from 'src/app/interfaces/interfaces';
 import { DataLocalService } from 'src/app/services/data-local.service';
 import { MoviesService } from 'src/app/services/movies.service';
 
@@ -28,10 +28,24 @@ export class DetalleComponent implements OnInit {
     spaceBetween: -5
   }
 
+  trailerURL: string = ""
+  viewTrailer: boolean = false;
+
   constructor(private moviesService: MoviesService, private modalCtrl: ModalController, private dataLocal: DataLocalService) { }
 
-   ngOnInit() {
+   async ngOnInit() {
     
+
+    this.slideOptActores = {
+      slidesPerView: 2.3,
+      freeMode: false,
+      spaceBetween: -5
+    }
+    this.slideOptDirectors = {
+      slidesPerView: 4,
+      freeMode: false,
+      spaceBetween: -5
+    }
     this.dataLocal.existePelicula(this.id).then(existe => this.estrella = (existe) ? 'star' : 'star-outline')
     
 
@@ -52,6 +66,9 @@ export class DetalleComponent implements OnInit {
         
         
       })
+      this.trailerURL = await this.getTrailer()
+    
+      
   }
 
   getDirectors(crew: Crew[]){
@@ -70,4 +87,23 @@ export class DetalleComponent implements OnInit {
    this.estrella =  this.dataLocal.guardarPelicula(this.pelicula) ? 'star': 'star-outline'
   }
 
+  async getTrailer(){
+    const result = await this.moviesService.getMovieTrailer(this.id)
+    console.log(result);
+    
+    let video: Video = null
+    if(result){
+      if(result.results.length == 0) return  ''
+      video = result.results.find(video => video.type == 'Trailer')
+    }
+
+    if(video && video.key){ 
+      const url = `https://www.youtube.com/embed/${video.key}`
+      if(url.includes('youtube')) return url
+      return  ''
+    }
+  }
+
 }
+
+

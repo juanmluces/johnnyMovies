@@ -25,7 +25,8 @@
         "directors": "Directores",
         "actors": "Actores",
         "goBack": "Volver",
-        "favorite": "Favorita"
+        "favorite": "Favorita",
+        "viewTrailer": "Ver Trailer"
     },
     "tab-settings": {
         "settings": "Ajustes",
@@ -36,5 +37,10 @@
         "english": "Inglés",
         "selectLang":"Elige un idioma",
         "cancel": "Cacelar"
+    },
+    "closeApp": {
+        "exit": "Salir",
+        "cancel": "Cancelar",
+        "exitApp": "¿Deseas salir?"
     }
 }

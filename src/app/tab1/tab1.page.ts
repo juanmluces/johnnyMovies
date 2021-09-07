@@ -12,8 +12,7 @@ export class Tab1Page implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
   populares: Pelicula[]= [];
-  modal: HTMLIonModalElement
-
+  
 
   constructor(
     private moviesService: MoviesService,
@@ -41,22 +40,7 @@ export class Tab1Page implements OnInit {
     })
   }
 
-   getModal(event){
-    // this.router.navigateByUrl('/tabs/tab2').then( () => {
-    //   this.router.navigateByUrl('/tabs/tab1').then( ()=> {
-        this.modal = event;   
 
-      // })
-    // })
-  }
-
-  canDeactivate(){    
-    if(this.modal){
-       this.modal.dismiss(); 
-       this.modal = undefined;
-       return false
-      }
-    return true
-  }
+ 
 
 }

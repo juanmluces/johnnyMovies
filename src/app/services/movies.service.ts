@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
-import { Genre, PeliculaDetalle, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
+import { Genre, PeliculaDetalle, responseVideos, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
 
 const URL = environment.url;
 const apiKey = environment.apiKey;
@@ -77,5 +77,11 @@ export class MoviesService {
           })
 
     })
+  }
+
+  getMovieTrailer(movieId: number): Promise<responseVideos>{
+   const lang = this.translate.currentLang
+   
+    return this.http.get<responseVideos>(`${URL}movie/${movieId}/videos?api_key=${apiKey}&LANGUAGE=${lang}`).toPromise()
   }
 }

@@ -6,8 +6,7 @@ import { Tab1Page } from './tab1.page';
 const routes: Routes = [
   {
     path: '',
-    component: Tab1Page,
-    canDeactivate: [CloseModalGuard]
+    component: Tab1Page
   }
 ];
 

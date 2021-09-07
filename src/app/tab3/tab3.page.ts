@@ -15,7 +15,6 @@ export class Tab3Page implements OnInit {
   generos: Genre[];
   favoritoGenero: any[] = []
   mostrarGeneros: boolean = true
-  modal: HTMLIonModalElement
   
 
   constructor(private dataLocal: DataLocalService, private moviesService: MoviesService, private router: Router) {}
@@ -47,22 +46,6 @@ export class Tab3Page implements OnInit {
     })
   }
 
-  getModal(event){
-    // this.router.navigateByUrl('/tabs/tab1').then( () => {
-    //   this.router.navigateByUrl('/tabs/tab3').then( ()=> {
-        this.modal = event;   
-
-      // })
-    // })   
-  }
-
-  canDeactivate(){    
-    if(this.modal){
-       this.modal.dismiss(); 
-       this.modal = undefined;
-       return false
-      }
-    return true
-  }
+ 
 
 }
