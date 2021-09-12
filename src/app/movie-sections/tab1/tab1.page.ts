@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pelicula, RespuestaMDB } from '../interfaces/interfaces';
-import { MoviesService } from '../services/movies.service';
+import { Pelicula, RespuestaMDB } from '../../interfaces/interfaces';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-tab1',

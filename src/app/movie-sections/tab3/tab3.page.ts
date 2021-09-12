@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Genre, PeliculaDetalle } from '../interfaces/interfaces';
-import { DataLocalService } from '../services/data-local.service';
-import { MoviesService } from '../services/movies.service';
+import { Genre, PeliculaDetalle } from '../../interfaces/interfaces';
+import { DataLocalService } from '../../services/data-local.service';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-tab3',

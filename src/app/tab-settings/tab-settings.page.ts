@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DataLocalService } from '../services/data-local.service';
 import { MoviesService } from '../services/movies.service';
+import { ObservablesService } from '../services/observables.service';
 
 @Component({
   selector: 'app-tab-settings',
@@ -12,8 +13,9 @@ export class TabSettingsPage implements OnInit {
 
   darkMode: boolean = false;
   mostrarGenero: boolean = false;
+  tabTitle = "tabs.settings"
 
-  constructor(private dataLocal: DataLocalService, public translate: TranslateService) {
+  constructor(private dataLocal: DataLocalService, public translate: TranslateService, private observables: ObservablesService) {
   }
   
   async ngOnInit(){
@@ -23,6 +25,7 @@ export class TabSettingsPage implements OnInit {
       document.body.classList.remove('light')
       document.body.classList.add('dark')
     }
+    this.observables.setTabTitle(this.tabTitle)
 
     
     // this.darkMode = await this.dataLocal.recuperarModoOscuro()

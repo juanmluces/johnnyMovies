@@ -27,14 +27,22 @@
           <ion-label>{{'detalle.votes' | translate}}</ion-label>
           <ion-note slot="end" color="primary">{{pelicula.vote_count}}</ion-note>
         </ion-item>
-        <ion-item *ngIf="trailerURL">
+        <!-- <ion-item *ngIf="trailerURL">
           <ion-icon slot="start" color="primary" name="videocam"></ion-icon>
-          <ion-label  (click)="viewTrailer = true">{{'detalle.viewTrailer' | translate}}</ion-label>
+          <ion-label  (click)="viewTrailer = true">{{'detalle.viewTrailer' | translate}}</ion-label> -->
           <!-- <ion-note slot="end" color="primary">{{pelicula.vote_count}}</ion-note> -->
-        </ion-item>
+        <!-- </ion-item> -->
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-button *ngIf="trailerURL && !viewTrailer" 
+    (click)="viewTrailer = true" 
+    expand="block" 
+    fill="outline">
+    <ion-icon slot="start" color="primary" name="videocam"></ion-icon>
+    {{'detalle.viewTrailer' | translate}}
+  </ion-button>
 
   <ion-grid fixed>
     <iframe *ngIf="trailerURL && viewTrailer"  height="315" [src]="trailerURL | safeURL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

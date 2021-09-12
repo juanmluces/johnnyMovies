@@ -12,10 +12,7 @@ export class ImagenPipe implements PipeTransform {
 
     if(!img) return './assets/no-image-banner.jpg'
 
-    const imgUrl =`${URL}/${size}/${img}`
-
-    console.log(imgUrl);
-    
+    const imgUrl =`${URL}/${size}/${img}`   
   
 
     return imgUrl;

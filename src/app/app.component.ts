@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { DataLocalService } from './services/data-local.service';
+import { ObservablesService } from './services/observables.service';
 
 
 @Component({
@@ -9,22 +10,36 @@ import { DataLocalService } from './services/data-local.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+
+  tabTitle: string;
+
+
   constructor(
     private dataLocal: DataLocalService, 
     private translate: TranslateService,
     private platform: Platform,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private observables: ObservablesService
     ) {
     this.initializeApp();
     this.translate.setDefaultLang('es')
+    this.tabTitle = observables.getTabTitle()
     
+  }
+
+  ngOnInit(){
+    this.observables.tabTitleObservable().subscribe( title => this.tabTitle = title)
   }
   
   async initializeApp() {
 
+    
+
     this.platform.backButton.subscribeWithPriority(0, async () => {
-      console.log('back new');
+      
+      
       await this.presentAlertConfirm()
       
     

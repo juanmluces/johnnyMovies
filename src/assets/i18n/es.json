@@ -1,9 +1,13 @@
 {
+    "header":{
+        "movies": "Películas"
+    },
     "tabs": {
         "movies": "Películas",
         "search": "Buscar",
         "favorite": "Favoritas",
-        "settings": "Ajustes"
+        "settings": "Ajustes",
+        "about": "Información"
     },
     "tab1":{
         "newMovies": "Películas Nuevas",

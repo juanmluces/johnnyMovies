@@ -1,9 +1,12 @@
-{
+{"header":{
+    "movies": "Movies"
+},
     "tabs": {
         "movies": "Movies",
         "search": "Search",
         "favorite": "Favorite",
-        "settings": "Settings"
+        "settings": "Settings",
+        "about": "About"
     },"tab1": {
         "newMovies": "New Movies",
         "inTheaters": "In theaters",

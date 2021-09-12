@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { DetalleComponent } from '../components/detalle/detalle.component';
-import { Pelicula } from '../interfaces/interfaces';
-import { MoviesService } from '../services/movies.service';
+import { DetalleComponent } from '../../components/detalle/detalle.component';
+import { Pelicula } from '../../interfaces/interfaces';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-tab2',
@@ -12,8 +12,8 @@ import { MoviesService } from '../services/movies.service';
 })
 export class Tab2Page implements OnInit {
 
-  bestMovies: string[] = ['2001: A Space Odyssey', 'The Godfather', 'Casablanca', 'Citizen Kane', 'Raiders of the Lost Ark', 'Seven Samurai', 'There Will Be Blood', 'Singin\' in the Rain', 'GoodFellas', 'Jaws', 'Star Wars', 'Once Upon a time in the west', 'Alien', 'The Lord of the rings', 'Pulp Fiction', 'Taxi Driver', 'Blade Runner']
-  ideas: string[] = []
+
+  ideas: string[];
   textoBuscar ='';
   peliculas: Pelicula[] = []
   buscando: boolean = false;
@@ -21,19 +21,17 @@ export class Tab2Page implements OnInit {
   constructor(private moviesService: MoviesService, private modalCtrl: ModalController, private router: Router) {}
 
   async ngOnInit(){
- 
-   
-      this.shuffle(this.bestMovies)
-     this.bestMovies.forEach(movie => {
-        if(this.ideas.length < 4){
-          this.ideas.push(movie)
-        }
-
-        
-      });
     
+    
+    
+     
+    
+  }
   
-    
+  async  ionViewWillEnter(){
+    this.ideas = []
+    this.getExampleMovies()
+
   }
 
   shuffle(array) {
@@ -81,6 +79,46 @@ export class Tab2Page implements OnInit {
 
       // })
     // })
+  }
+
+  getExampleMovies(){
+    const exampleMovies = [
+      '2001: A Space Odyssey', 
+      'The Godfather', 
+      'Casablanca', 
+      'Citizen Kane', 
+      'Raiders of the Lost Ark', 
+      'Seven Samurai', 
+      'There Will Be Blood', 
+      'Singin\' in the Rain', 
+      'GoodFellas', 
+      'Jaws', 
+      'Star Wars', 
+      'Once Upon a time in the west', 
+      'Alien', 
+      'The Lord of the rings', 
+      'Pulp Fiction', 
+      'Taxi Driver', 
+      'Blade Runner', 
+      'Nosferatu', 
+      'Airplane!', 
+      'Mad Max', 
+      'Apocalypse Now', 
+      'Toy Story', 
+      'Die Hard', 
+      'The last samurai'
+    ]
+
+
+    this.shuffle(exampleMovies)
+    exampleMovies.forEach(movie => {
+        if(this.ideas.length < 4){
+          this.ideas.push(movie)
+        }
+
+        
+      });
+    return
   }
 
 

@@ -91,6 +91,7 @@ export class DetalleComponent implements OnInit {
     const result = await this.moviesService.getMovieTrailer(this.id)
     console.log(result);
     
+    
     let video: Video = null
     if(result){
       if(result.results.length == 0) return  ''
@@ -99,7 +100,7 @@ export class DetalleComponent implements OnInit {
 
     if(video && video.key){ 
       const url = `https://www.youtube.com/embed/${video.key}`
-      if(url.includes('youtube')) return url
+      if(video.site && video.site.toLowerCase() == "youtube") return url
       return  ''
     }
   }
