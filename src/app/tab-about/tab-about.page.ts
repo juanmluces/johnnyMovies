@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ObservablesService } from '../services/observables.service';
 
 @Component({
@@ -9,6 +10,9 @@ import { ObservablesService } from '../services/observables.service';
 export class TabAboutPage implements OnInit {
 
   tabTitle = 'tabs.about'
+  appVersion = environment.appVersion
+  ionicVersion = environment.ionicVersion
+  angularVersion = environment.angularVersion
 
   constructor(private observables: ObservablesService) { }
 

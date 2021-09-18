@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ObservablesService } from 'src/app/services/observables.service';
 import { Genre, PeliculaDetalle } from '../../interfaces/interfaces';
 import { DataLocalService } from '../../services/data-local.service';
 import { MoviesService } from '../../services/movies.service';
@@ -15,15 +16,21 @@ export class Tab3Page implements OnInit {
   generos: Genre[];
   favoritoGenero: any[] = []
   mostrarGeneros: boolean = true
+  tabTitle = 'tab3.favorite'
   
 
-  constructor(private dataLocal: DataLocalService, private moviesService: MoviesService, private router: Router) {}
+  constructor(
+    private dataLocal: DataLocalService, 
+    private moviesService: MoviesService, 
+    private observables: ObservablesService) {}
 
   async ngOnInit(){
+    this.observables.setTabTitle(this.tabTitle)
     this.mostrarGeneros = await this.dataLocal.recuperarMostrarGeneros()
   }
 
   async  ionViewWillEnter(){
+    this.observables.setTabTitle(this.tabTitle)
     this.peliculas = await this.dataLocal.cargarFavoritos()
     this.generos = await this.moviesService.cargarGeneros();
     this.pelisPorGenero(this.generos, this.peliculas)

@@ -14,7 +14,8 @@ export class DetalleComponent implements OnInit {
   @Input()id;
   pelicula: PeliculaDetalle = {};
   director:  string = '';
-  oculto = 150;
+  oculto: boolean = true;
+  limiteOculto = 150;
   estrella = 'star-outline'
   actores: Cast[] = [];
   slideOptActores = {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { DataLocalService } from './services/data-local.service';
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit{
     private translate: TranslateService,
     private platform: Platform,
     public alertController: AlertController,
-    private observables: ObservablesService
+    private observables: ObservablesService,
+    private router: Router
     ) {
     this.initializeApp();
     this.translate.setDefaultLang('es')
@@ -38,9 +40,18 @@ export class AppComponent implements OnInit{
     
 
     this.platform.backButton.subscribeWithPriority(0, async () => {
-      
-      
-      await this.presentAlertConfirm()
+      this.observables.backButtonPressed(true)
+      setTimeout(()=>{this.observables.backButtonPressed(false)}, 0)
+      const url = this.router.url
+      if(url.includes("/movies/")){
+        if(this.router.url == "/movies/tab1"){
+          await this.presentAlertConfirm()
+        } else{
+          await this.router.navigate(['movies', 'tab1'])
+        }
+        
+      }
+      // console.log('this.router.url', this.router.url);
       
     
      

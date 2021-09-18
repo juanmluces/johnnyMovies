@@ -20,7 +20,8 @@
         "ideas": "Ideas"
     },
     "tab3": {
-        "favorite": "Favoritas"
+        "favorite": "Favoritas",
+        "noFavMovies": "No has agregado películas a favoritos."
     },
     "detalle": {
         "rating": "Rating",
@@ -41,6 +42,11 @@
         "english": "Inglés",
         "selectLang":"Elige un idioma",
         "cancel": "Cacelar"
+    },
+    "tab-about": {
+        "appInfo": "Aplicación",
+        "databaseInfo": "Base de datos API",
+        "developerInfo": "Desarrollador"
     },
     "closeApp": {
         "exit": "Salir",

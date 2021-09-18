@@ -1,6 +1,7 @@
-{"header":{
+{
+    "header":{
     "movies": "Movies"
-},
+    },
     "tabs": {
         "movies": "Movies",
         "search": "Search",
@@ -18,7 +19,8 @@
         "ideas": "Ideas"
     },
     "tab3": {
-        "favorite": "Favorite"
+        "favorite": "Favorite",
+        "noFavMovies": "You havent added any favorite movies yet."
     },
     "detalle": {
         "rating": "Rating",
@@ -39,6 +41,11 @@
         "english": "English",
         "selectLang":"Select language",
         "cancel": "Cancel"
+    },
+    "tab-about": {
+        "appInfo": "App Info",
+        "databaseInfo": "Database API",
+        "developerInfo": "Developer"
     },
     "closeApp": {
         "exit": "Exit",

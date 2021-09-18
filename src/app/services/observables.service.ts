@@ -11,6 +11,8 @@ export class ObservablesService {
   private tabTitle: string = '';
   private tabTitle$ = new Subject<string>(); 
 
+  private backButtonEvent$ = new Subject<boolean>();
+
   getTabTitle(): string{
     return this.tabTitle
   }
@@ -24,6 +26,14 @@ export class ObservablesService {
     this.tabTitle$.next(title)
   }
 
+  backButtonPressed(press:boolean){
+    this.backButtonEvent$.next(press)
+  }
 
+  
+  backButton$(): Observable<boolean>{
+    return this.backButtonEvent$.asObservable()
+  }
+  
   
 }

@@ -1,17 +1,16 @@
 <ion-content>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col>
-        <h3>{{'tab3.favorite' | translate}}</h3>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
+  <div *ngIf="!peliculas.length" class="card-container">
+    <ion-card>
+      <ion-item>
+        <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+        <ion-label>{{'tab3.noFavMovies' |translate}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
   
  
-    
- 
-    <app-slideshow-poster *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
+  <app-slideshow-poster *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
 
   <ng-container *ngIf="mostrarGeneros">
 

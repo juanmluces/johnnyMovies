@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TabAboutPageRoutingModule } from './tab-about-routing.module';
 
 import { TabAboutPage } from './tab-about.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabAboutPageRoutingModule
+    TabAboutPageRoutingModule,
+    TranslateModule
   ],
   declarations: [TabAboutPage]
 })

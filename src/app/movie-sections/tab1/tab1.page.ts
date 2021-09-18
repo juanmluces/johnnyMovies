@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ObservablesService } from 'src/app/services/observables.service';
 import { Pelicula, RespuestaMDB } from '../../interfaces/interfaces';
 import { MoviesService } from '../../services/movies.service';
 
@@ -12,20 +13,28 @@ export class Tab1Page implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
   populares: Pelicula[]= [];
+
+  tabTitle = 'header.movies'
   
 
   constructor(
     private moviesService: MoviesService,
-    private router: Router
+    private observables: ObservablesService
   ) {}
 
   ngOnInit(){
+    this.observables.setTabTitle(this.tabTitle)
     this.moviesService.getFeature()
       .subscribe( resp => {
         this.peliculasRecientes = resp.results;
       })
       this.getPopulares()
      
+  }
+
+  ionViewWillEnter(){
+    this.observables.setTabTitle(this.tabTitle)
+ 
   }
 
   cargarMas(){

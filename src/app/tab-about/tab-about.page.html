@@ -3,30 +3,43 @@
 
   <ion-list>
     <ion-list-header>
-      App Info
+      {{'tab-about.appInfo'| translate}}
     </ion-list-header>
     <ion-item>
       <ion-avatar slot="start">
         <img src="assets/icons/icon-72x72.png">
       </ion-avatar>
-      <ion-label>Johnny Movies v1.0</ion-label>
+      <ion-label>Johnny Movies v{{appVersion}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-avatar slot="start">
         <img src="assets/icon/favicon.png">
       </ion-avatar>
-      <ion-label>Ionic v6.13</ion-label>
+      <ion-label>Ionic v{{ionicVersion}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-avatar slot="start">
         <img src="assets/angular.png">
       </ion-avatar>
-      <ion-label>Angular v12.0.5</ion-label>
+      <ion-label>Angular v{{angularVersion}}</ion-label>
     </ion-item>
   </ion-list>
+
   <ion-list>
     <ion-list-header>
-      Developer Info
+      {{'tab-about.databaseInfo'| translate}}
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets/tmdb1.png">
+      </ion-avatar>
+      <ion-label>https://www.themoviedb.org/</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      {{'tab-about.developerInfo'| translate}}
     </ion-list-header>
     <ion-item>
       <ion-avatar slot="start">

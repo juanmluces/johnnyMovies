@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { ObservablesService } from 'src/app/services/observables.service';
 import { DetalleComponent } from '../../components/detalle/detalle.component';
 import { Pelicula } from '../../interfaces/interfaces';
 import { MoviesService } from '../../services/movies.service';
@@ -17,20 +19,28 @@ export class Tab2Page implements OnInit {
   textoBuscar ='';
   peliculas: Pelicula[] = []
   buscando: boolean = false;
+  backButtonSubscription: Subscription
+  backButtonPressed: boolean = false
+  tabTitle = 'tab2.searchMovie'
 
-  constructor(private moviesService: MoviesService, private modalCtrl: ModalController, private router: Router) {}
+  constructor(
+    private moviesService: MoviesService, 
+    private modalCtrl: ModalController, 
+    private observables: ObservablesService) {}
 
   async ngOnInit(){
-    
-    
-    
-     
-    
+    this.observables.setTabTitle(this.tabTitle)
   }
   
   async  ionViewWillEnter(){
+    this.observables.setTabTitle(this.tabTitle)
+    this.observables.backButton$().subscribe(buttonPressed => {
+      
+      this.backButtonPressed = buttonPressed  
+    })
     this.ideas = []
     this.getExampleMovies()
+
 
   }
 
@@ -119,6 +129,15 @@ export class Tab2Page implements OnInit {
         
       });
     return
+  }
+
+  canDeactivate(){
+    if(this.backButtonPressed && this.textoBuscar){
+      this.textoBuscar = ''
+      this.peliculas = []
+      return false
+    }
+    return true
   }
 
 
