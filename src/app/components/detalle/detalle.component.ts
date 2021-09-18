@@ -32,7 +32,11 @@ export class DetalleComponent implements OnInit {
   trailerURL: string = ""
   viewTrailer: boolean = false;
 
-  constructor(private moviesService: MoviesService, private modalCtrl: ModalController, private dataLocal: DataLocalService) { }
+  constructor(
+    private moviesService: MoviesService, 
+    private modalCtrl: ModalController, 
+    private dataLocal: DataLocalService
+    ) { }
 
    async ngOnInit() {
     
