@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
@@ -15,6 +15,10 @@ import { MoviesService } from '../../services/movies.service';
 export class Tab2Page implements OnInit {
 
 
+  colSize = 6
+  tabletBreakpointPx = 900;
+  desktopBpPx = 1400;
+
   ideas: string[];
   textoBuscar ='';
   peliculas: Pelicula[] = []
@@ -23,6 +27,12 @@ export class Tab2Page implements OnInit {
   backButtonPressed: boolean = false
   tabTitle = 'tab2.searchMovie'
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+   this.checkViewport()
+  }
+
+
   constructor(
     private moviesService: MoviesService, 
     private modalCtrl: ModalController, 
@@ -30,6 +40,7 @@ export class Tab2Page implements OnInit {
 
   async ngOnInit(){
     this.observables.setTabTitle(this.tabTitle)
+    this.checkViewport()
   }
   
   async  ionViewWillEnter(){
@@ -138,6 +149,27 @@ export class Tab2Page implements OnInit {
       return false
     }
     return true
+  }
+
+  checkViewport(){
+    const width = window.innerWidth
+    switch (true) {
+      case width > this.desktopBpPx:
+       this.colSize = 2
+        break;
+      case width <= this.desktopBpPx && width >= this.tabletBreakpointPx:
+       this.colSize = 4
+        break;
+
+      case width <  this.tabletBreakpointPx:
+        this.colSize = 6
+        break;
+    
+      default:
+        break;
+    }
+   
+    
   }
 
 

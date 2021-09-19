@@ -49,3 +49,14 @@ ion-slides.wrap-slide{
         flex-wrap: wrap;
     }
 }
+
+
+@media(min-width: 1400px){
+
+    .detallesClass{
+        .modal-wrapper{
+            width: 60%;
+            max-width: 1000px;
+        }
+    }
+}
