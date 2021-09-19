@@ -42,3 +42,10 @@
 .exit-button{
     color:   var(--ion-color-danger) !important;
 }
+
+ion-slides.wrap-slide{
+
+    .swiper-wrapper{
+        flex-wrap: wrap;
+    }
+}

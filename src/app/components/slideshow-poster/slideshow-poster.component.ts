@@ -14,10 +14,11 @@ export class SlideshowPosterComponent implements OnInit {
     
   slideOpts = {
     slidesPerView: 3.3,
-    freeMode: false
+    freeMode: false,
   }
 
   @Input() peliculas: PeliculaDetalle[] = []
+  @Input() flexWrap: boolean;
   @Output() modalDismissed = new EventEmitter()
   @Output() modalCreated = new EventEmitter<HTMLIonModalElement>()
 

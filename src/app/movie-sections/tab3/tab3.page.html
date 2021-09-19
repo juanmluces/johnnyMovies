@@ -10,7 +10,7 @@
   </div>
   
  
-  <app-slideshow-poster *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
+  <app-slideshow-poster [flexWrap]="true" class="no-geners" *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
 
   <ng-container *ngIf="mostrarGeneros">
 

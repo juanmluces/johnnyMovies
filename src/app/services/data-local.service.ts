@@ -71,7 +71,8 @@ export class DataLocalService {
 
   async recuperarModoOscuro(): Promise<boolean>{
     if(!this._storage) await this.init()
-    const modoOscuro = await this._storage.get('oscuro');
+    const modoOscuro = await this._storage.get('oscuro') ?? true;
+    
     return modoOscuro
   }
 
