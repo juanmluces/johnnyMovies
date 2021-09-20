@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import {OneSignal } from '@ionic-native/onesignal/ngx'
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +42,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    OneSignal
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
