@@ -52,5 +52,11 @@
         "exit": "Salir",
         "cancel": "Cancelar",
         "exitApp": "¿Deseas salir?"
+    },
+    "notification":{
+        "update": "Actualizar",
+        "newVersion": "Nueva version",
+        "notNow": "Ahora no",
+        "newUpdate": "Nueva Actualización ⭐"
     }
 }

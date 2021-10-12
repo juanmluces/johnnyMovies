@@ -15,6 +15,8 @@ export class Tab1Page implements OnInit {
   populares: Pelicula[]= [];
 
   tabTitle = 'header.movies'
+
+  spinnerLoading: boolean = true;
   
 
   constructor(
@@ -37,16 +39,18 @@ export class Tab1Page implements OnInit {
  
   }
 
-  cargarMas(){
-   this.getPopulares()
+  async cargarMas(){
+    this.spinnerLoading = true;
+    await this.getPopulares()
+    this.spinnerLoading = false;
   }
 
-  getPopulares(){
-    this.moviesService.getPopular()
-    .subscribe( resp => {
-      const arrTemp = [ ...this.populares, ...resp.results]
-      this.populares = arrTemp
-    })
+  async getPopulares(){
+   const resp = await  this.moviesService.getPopular().toPromise()
+   const arrTemp = [ ...this.populares, ...resp.results]
+   this.populares = arrTemp
+    // .subscribe( resp => {
+    // })
   }
 
 

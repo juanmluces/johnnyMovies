@@ -75,23 +75,32 @@ export class AppComponent implements OnInit{
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
 
-    this.oneSignal.handleNotificationReceived().subscribe(data => {
+    this.oneSignal.handleNotificationReceived().subscribe(async data => {
+      if(!data?.payload?.additionalData) return
 
-      let msg = data.payload.body;
-      let title = data.payload.title;
-      let additionalData = data.payload.additionalData;
-      const task = additionalData.info ?? ''
-      this.showAlert(title, msg, task)
+      const additionalData = data.payload.additionalData;
+      const title = await this.translate.get(additionalData.title).toPromise();
+      const version = additionalData.version ?? ''
+      const update = await this.translate.get(additionalData.update ?? '').toPromise()
+      const newVersion = await this.translate.get(additionalData.newVersion ?? '').toPromise()
+      const msg = newVersion + ' ' + version;
+      const task = {version, update, newVersion}
+      await this.showAlert(title, msg, task)
     });
 
 
-    this.oneSignal.handleNotificationOpened().subscribe(data => {
+    this.oneSignal.handleNotificationOpened().subscribe(async data => {
+      if(!data?.notification?.payload?.additionalData) return
 
       
-      let additionalData = data.notification.payload.additionalData;
-     
-      const task = additionalData.info ?? ''
-      this.showAlert('Notificacion abierta', 'Mas cosas', task)
+      const additionalData = data.notification.payload.additionalData;
+      const title = await this.translate.get(additionalData.title).toPromise();
+      const version = additionalData.version ?? ''
+      const update = await this.translate.get(additionalData.update ?? '').toPromise()
+      const newVersion = await this.translate.get(additionalData.newVersion ?? '').toPromise()
+      const msg = newVersion + ' ' + version;
+      const task = {version, update, newVersion}
+      await this.showAlert(title, msg, task)
 
 
     });
@@ -100,14 +109,23 @@ export class AppComponent implements OnInit{
   }
 
   async showAlert(title, msg, task){
+    const cancelMsg = await this.translate.get('notification.notNow').toPromise()
     const alert = await this.alertController.create({
       header: title,
       subHeader: msg,
       buttons: [
         {
-          text: `Action: ${task}`,
+          text: cancelMsg,
+          handler: () =>{
+            this.oneSignal.clearOneSignalNotifications()
+            alert.dismiss();
+          }
+        },
+        {
+          text: `${task.update}`,
           handler: () => {
-            // navigate
+            this.oneSignal.clearOneSignalNotifications()
+            window.open('https://play.google.com/store/apps/details?id=com.codignlights.johnnymovies', '_system', 'location=yes');
           }
         }
       ]

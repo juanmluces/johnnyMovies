@@ -1,5 +1,5 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { Pelicula } from 'src/app/interfaces/interfaces';
 import { DetalleComponent } from '../detalle/detalle.component';
 
@@ -21,8 +21,10 @@ export class SlideshowParesComponent implements OnInit {
   }
 
   @Input() peliculas: Pelicula[] = []
+  @Input() spinnerLoading: boolean;
   @Output() cargarMas = new EventEmitter();
   @Output() modalCreated = new EventEmitter<HTMLIonModalElement>()
+  @ViewChild('slides') slides: IonSlides
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -36,6 +38,15 @@ export class SlideshowParesComponent implements OnInit {
     this.checkViewport()
   }
 
+  async slideChanged(){
+    
+    const end = await this.slides.isEnd()
+    if(end) this.onClick()
+    console.log({spinnerLoading: this.spinnerLoading});
+    console.log(end);
+    
+  }
+  
   onClick(){
     this.cargarMas.emit()
   }
