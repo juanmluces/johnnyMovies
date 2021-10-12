@@ -1,6 +1,9 @@
 <ion-slides [options]="slideOpts">
   <ion-slide *ngFor="let pelicula of peliculas | filtroImagen">
     <ion-card (click)="verDetalle(pelicula.id)">
+      <ion-label class="titulo">
+        <h1>{{ pelicula.title | slice:0:22 }}<span *ngIf="pelicula.title.length > 22">...</span></h1>
+      </ion-label>
       <img [src]="pelicula.backdrop_path | imagen" [alt]="pelicula.title">
     </ion-card>
   </ion-slide>

@@ -52,20 +52,20 @@ export class SlideshowBackdropComponent implements OnInit {
       case width > this.desktopBpPx:
         this. slideOpts = {
           slidesPerView: 3.3,
-          freeMode: false
+          freeMode: true
         }
         break;
       case width <= this.desktopBpPx && width >= this.tabletBreakpointPx:
         this. slideOpts = {
           slidesPerView: 2.3,
-          freeMode: false
+          freeMode: true
         }
         break;
 
       case width <  this.tabletBreakpointPx:
         this. slideOpts = {
           slidesPerView: 1.3,
-          freeMode: false
+          freeMode: true
         }
         break;
     

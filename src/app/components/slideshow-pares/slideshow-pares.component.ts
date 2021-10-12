@@ -58,7 +58,7 @@ export class SlideshowParesComponent implements OnInit {
       case width > this.desktopBpPx:
         this.slideOpts = {
           slidesPerView: 9.3,
-          freeMode: false,
+          freeMode: true,
           spaceBetween: -10
         }
       
@@ -66,7 +66,7 @@ export class SlideshowParesComponent implements OnInit {
       case width <= this.desktopBpPx && width >= this.tabletBreakpointPx:
         this.slideOpts = {
           slidesPerView: 6.3,
-          freeMode: false,
+          freeMode: true,
           spaceBetween: -10
         }
       
@@ -75,7 +75,7 @@ export class SlideshowParesComponent implements OnInit {
       case width <  this.tabletBreakpointPx:
         this.slideOpts = {
           slidesPerView: 3.3,
-          freeMode: false,
+          freeMode: true,
           spaceBetween: -10
         }
       
