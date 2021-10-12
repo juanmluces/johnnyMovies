@@ -116,9 +116,11 @@ export class AppComponent implements OnInit{
       buttons: [
         {
           text: cancelMsg,
-          handler: () =>{
+          role: 'cancel',
+          handler: async () =>{
             this.oneSignal.clearOneSignalNotifications()
-            alert.dismiss();
+            await alert.dismiss()
+            
           }
         },
         {
