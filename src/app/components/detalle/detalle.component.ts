@@ -16,7 +16,7 @@ export class DetalleComponent implements OnInit {
   director:  string = '';
   oculto: boolean = true;
   limiteOculto = 150;
-  estrella = 'star-outline'
+  favoriteIcon = 'cl-heart-outline'
   actores: Cast[] = [];
   slideOptActores = {
     slidesPerView: 2.3,
@@ -51,7 +51,7 @@ export class DetalleComponent implements OnInit {
       freeMode: false,
       spaceBetween: -5
     }
-    this.dataLocal.existePelicula(this.id).then(existe => this.estrella = (existe) ? 'star' : 'star-outline')
+    this.dataLocal.existePelicula(this.id).then(existe => this.favoriteIcon = (existe) ? 'cl-heart': 'cl-heart-outline')
     
 
     this.moviesService.getPeliculaDetalle(this.id)
@@ -89,7 +89,7 @@ export class DetalleComponent implements OnInit {
   }
 
   favorito(){
-   this.estrella =  this.dataLocal.guardarPelicula(this.pelicula) ? 'star': 'star-outline'
+   this.favoriteIcon =  this.dataLocal.guardarPelicula(this.pelicula) ? 'cl-heart': 'cl-heart-outline'
   }
 
   async getTrailer(){

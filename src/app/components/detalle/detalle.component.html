@@ -18,7 +18,7 @@
 
       <ion-col>
         <ion-item>
-          <ion-icon slot="start" color="primary" name="thumbs-up"></ion-icon>
+          <ion-icon slot="start" color="primary" name="cl-thumbs-up"></ion-icon>
           <ion-label>{{'detalle.rating' | translate}}</ion-label>
           <ion-note slot="end" color="primary">{{pelicula.vote_average}}</ion-note>
         </ion-item>
@@ -122,7 +122,7 @@
     </ion-button>
     <ion-button fill="clear" slot="end" (click)="favorito()">
       <ion-label>{{'detalle.favorite' | translate}}</ion-label>
-      <ion-icon slot="end" [name]="estrella"></ion-icon>
+      <ion-icon slot="end" [name]="favoriteIcon"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-footer>
