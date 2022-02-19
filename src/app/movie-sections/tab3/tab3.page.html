@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div *ngIf="!peliculas.length" class="card-container">
+  <div *ngIf="!peliculas?.length" class="card-container">
     <ion-card>
       <ion-item lines="none">
         <ion-icon name="cl-heart-broken"></ion-icon>
@@ -18,7 +18,7 @@
 
     <div  *ngFor="let pelicula of favoritoGenero">
       
-      <ion-grid *ngIf="pelicula.pelis.length > 0">
+      <ion-grid *ngIf="pelicula?.pelis?.length > 0">
         <ion-row>
           <ion-col>
             <h4>{{pelicula.genero}}</h4>
