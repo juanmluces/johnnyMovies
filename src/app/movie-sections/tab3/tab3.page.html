@@ -2,8 +2,10 @@
 
   <div *ngIf="!peliculas.length" class="card-container">
     <ion-card>
-      <ion-item>
-        <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+      <ion-item lines="none">
+        <ion-icon name="cl-heart-broken"></ion-icon>
+      </ion-item>
+      <ion-item  lines="none">
         <ion-label>{{'tab3.noFavMovies' |translate}}</ion-label>
       </ion-item>
     </ion-card>

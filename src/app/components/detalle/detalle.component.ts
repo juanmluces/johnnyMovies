@@ -13,7 +13,7 @@ export class DetalleComponent implements OnInit {
 
   @Input()id;
   pelicula: PeliculaDetalle = {};
-  director:  string = '';
+  directors:  Array<string> = [];
   oculto: boolean = true;
   limiteOculto = 150;
   favoriteIcon = 'cl-heart-outline'
@@ -25,7 +25,7 @@ export class DetalleComponent implements OnInit {
   }
   slideOptDirectors = {
     slidesPerView: 4,
-    freeMode: false,
+    freeMode: true,
     spaceBetween: -5
   }
 
@@ -66,7 +66,7 @@ export class DetalleComponent implements OnInit {
      
        
         this.actores = resp.cast;
-        if(resp.crew) this.director = this.getDirectors(resp.crew)
+        if(resp.crew) this.directors = this.getDirectors(resp.crew)
         
         
         
@@ -81,7 +81,7 @@ export class DetalleComponent implements OnInit {
     crew.forEach(member => {
       if(member.department == "Directing") dir.push(member.name)
     })
-    return dir[0]
+    return dir
   }
 
   regresar(){

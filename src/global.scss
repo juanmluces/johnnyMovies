@@ -26,6 +26,11 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+.color-secondary{
+    color: var( --ion-color-secondary)
+}
+
+
 .poster{
     width: 110px !important;
     height: 160px !important;

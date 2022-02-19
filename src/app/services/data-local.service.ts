@@ -30,7 +30,7 @@ export class DataLocalService {
       message: msg,
       duration: 500,
       color: color,
-      position: 'bottom'
+      position: 'top'
     });
     toast.present();
   }

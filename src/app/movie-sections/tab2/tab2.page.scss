@@ -1,4 +1,23 @@
-.movie-image{
-    min-height: 300px;
-    object-fit: cover;
+.movie-image {
+	min-height: 300px;
+	object-fit: cover;
+}
+
+ion-list{
+		&.ideas{
+		background: transparent;
+		ion-item{
+			--background: transparent;
+		}
+	}
+}
+
+.movie-container {
+
+	ion-card-content {
+		padding: 0;
+		h2 {
+			color: var(--ion-color-step-550);
+		}
+	}
 }

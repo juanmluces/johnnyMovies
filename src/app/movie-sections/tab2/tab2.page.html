@@ -19,7 +19,7 @@
   </ion-row>
 </ion-grid>
 
-<ion-list *ngIf="peliculas.length === 0">
+<ion-list class="ideas"  lines="none" *ngIf="peliculas.length === 0">
   <ion-list-header>
     <ion-label>{{'tab2.ideas' | translate}}</ion-label>
   </ion-list-header>
@@ -32,17 +32,20 @@
 
 <ion-grid fixed>
   <ion-row>
+    
     <ion-col *ngFor="let pelicula of peliculas" [size]="colSize">
-      <ion-card (click)="verDetalle(pelicula.id)">
-        <img class="movie-image" [src]="pelicula.poster_path | imagen">
-        <ion-card-header>
-          <ion-card-subtitle>{{pelicula.release_date}}</ion-card-subtitle>
-          <ion-card-content>
-            <h2>{{pelicula.title}}</h2>
-          </ion-card-content>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
+        <!-- <ion-item  lines="none" > -->
+        <ion-card class="movie-container" (click)="verDetalle(pelicula.id)">
+          <img class="movie-image" [src]="pelicula.poster_path | imagen">
+          <ion-card-header>
+            <ion-card-subtitle>{{pelicula.release_date}}</ion-card-subtitle>
+            <ion-card-content>
+              <h2>{{pelicula.title}}</h2>
+            </ion-card-content>
+          </ion-card-header>
+        </ion-card>
+      <!-- </ion-item> -->
+      </ion-col>
   </ion-row>
 </ion-grid>
 
