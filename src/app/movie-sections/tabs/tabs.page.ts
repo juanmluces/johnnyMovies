@@ -24,7 +24,8 @@ export class TabsPage implements OnInit {
   }
   
   ionViewWillEnter(){
-    this.observables.setTabTitle(this.tabTitle)
+    this.observables.setTabTitle(this.tabTitle);
+    this.observables.setShowBackButton(false);
  
   }
 

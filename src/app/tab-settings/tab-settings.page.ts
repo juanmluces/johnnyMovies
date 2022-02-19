@@ -21,18 +21,17 @@ export class TabSettingsPage implements OnInit {
   async ngOnInit(){
     
     [this.darkMode, this.mostrarGenero] = await Promise.all([this.dataLocal.recuperarModoOscuro(), this.dataLocal.recuperarMostrarGeneros()])
-    if(this.darkMode){
-      document.body.classList.remove('light')
-      document.body.classList.add('dark')
-    }
-    this.observables.setTabTitle(this.tabTitle)
+    if(this.darkMode) document.body.classList.add('dark');
+    this.observables.setTabTitle(this.tabTitle);
 
-    
-    // this.darkMode = await this.dataLocal.recuperarModoOscuro()
-    // this.mostrarGenero = await this.dataLocal.recuperarMostrarGeneros()
 
   }
-  
+
+  ionViewWillEnter(){
+    this.observables.setShowBackButton(true);
+  }
+
+
 
   
 
@@ -43,15 +42,14 @@ export class TabSettingsPage implements OnInit {
   }
 
   changeMode(){
-
-    if(this.darkMode){
-      document.body.classList.remove('light')
-      document.body.classList.add('dark')
-    } else{
-      document.body.classList.add('light')
-      document.body.classList.remove('dark')
-    }
-
+    this.darkMode ? document.body.classList.add('dark') : document.body.classList.remove('dark');
+    // if(this.darkMode){
+      // document.body.classList.remove('light')
+      // document.body.classList.add('dark')
+    // } else{
+      // document.body.classList.add('light')
+      // document.body.classList.remove('dark')
+    // }
     this.dataLocal.guardarModoOscuro(this.darkMode)
     
   }

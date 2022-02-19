@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,17 @@ export class ObservablesService {
 
   private tabTitle: string = '';
   private tabTitle$ = new Subject<string>(); 
+  private showBackButton$ = new BehaviorSubject(false);
 
   private backButtonEvent$ = new Subject<boolean>();
+
+  getShowBackButton$(): BehaviorSubject<boolean>{
+    return this.showBackButton$;
+  }
+
+  setShowBackButton(show: boolean):void{
+    this.showBackButton$.next(show);
+  }
 
   getTabTitle(): string{
     return this.tabTitle

@@ -42,8 +42,8 @@ export class SlideshowParesComponent implements OnInit {
     
     const end = await this.slides.isEnd()
     if(end) this.onClick()
-    console.log({spinnerLoading: this.spinnerLoading});
-    console.log(end);
+    // console.log({spinnerLoading: this.spinnerLoading});
+    // console.log(end);
     
   }
   

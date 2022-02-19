@@ -16,13 +16,13 @@
         </ion-card>
       </ion-col>
 
-      <ion-col>
-        <ion-item>
+      <ion-col class="ratings">
+        <ion-item lines="none">
           <ion-icon slot="start" color="primary" name="cl-thumbs-up"></ion-icon>
           <ion-label>{{'detalle.rating' | translate}}</ion-label>
           <ion-note slot="end" color="primary">{{pelicula.vote_average}}</ion-note>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none">
           <ion-icon slot="start" color="primary" name="people"></ion-icon>
           <ion-label>{{'detalle.votes' | translate}}</ion-label>
           <ion-note slot="end" color="primary">{{pelicula.vote_count}}</ion-note>
@@ -49,8 +49,12 @@
   </ion-grid>
   
   <ion-grid fixed>
-    <ion-row *ngIf="pelicula.overview">
-      <ion-col size="12">
+    <ion-row *ngIf="pelicula.release_date" >
+      <ion-col size="12" class="year">
+        <ion-icon color="primary" name="calendar-outline"></ion-icon>
+        <ion-label color="primary">{{pelicula.release_date | date:'YYYY'}}</ion-label>
+      </ion-col>
+      <ion-col *ngIf="pelicula.overview" size="12">
         <ion-label>
           <span *ngIf="oculto">
             {{ pelicula.overview | slice: 0: limiteOculto }}

@@ -127,7 +127,8 @@ export class Tab2Page implements OnInit {
       'Apocalypse Now', 
       'Toy Story', 
       'Die Hard', 
-      'The last samurai'
+      'The last samurai',
+      'Inglourious Basterds'
     ]
 
 

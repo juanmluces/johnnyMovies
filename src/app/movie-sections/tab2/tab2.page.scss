@@ -12,8 +12,11 @@ ion-list{
 	}
 }
 
+ion-col{
+	margin-bottom: 1rem;
+}
 .movie-container {
-
+	height: 100%;
 	ion-card-content {
 		padding: 0;
 		h2 {

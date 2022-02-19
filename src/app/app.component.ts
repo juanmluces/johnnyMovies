@@ -12,71 +12,74 @@ import { ObservablesService } from './services/observables.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
 
   tabTitle: string;
+  backButton: boolean;
 
 
   constructor(
-    private dataLocal: DataLocalService, 
+    private dataLocal: DataLocalService,
     private translate: TranslateService,
     private platform: Platform,
     public alertController: AlertController,
     private observables: ObservablesService,
     private router: Router,
     private oneSignal: OneSignal
-    ) {
+  ) {
     this.initializeApp();
     this.translate.setDefaultLang('es')
     this.tabTitle = observables.getTabTitle()
-    
+    this.backButton = false;
+
   }
 
-  ngOnInit(){
-    this.observables.tabTitleObservable().subscribe( title => this.tabTitle = title)
+  ngOnInit() {
+    this.observables.tabTitleObservable().subscribe(title => this.tabTitle = title);
+    this.observables.getShowBackButton$().subscribe(show => this.backButton = show);
   }
-  
+
   async initializeApp() {
 
-      if(this.platform.is('cordova')){
-        this.setPush()
-      }
+    if (this.platform.is('cordova')) {
+      this.setPush()
+    }
 
     this.platform.backButton.subscribeWithPriority(0, async () => {
-      console.log('button pressed');
-      
+   
+
       this.observables.backButtonPressed(true)
-      setTimeout(()=>{this.observables.backButtonPressed(false)}, 0)
+      setTimeout(() => { this.observables.backButtonPressed(false) }, 0)
       const url = this.router.url
-      if(url.includes("/movies/")){
-        if(this.router.url == "/movies/tab1"){
+      if (url.includes("/movies/")) {
+        if (this.router.url == "/movies/tab1") {
           await this.presentAlertConfirm()
-        } else{
+        } else {
           await this.router.navigate(['movies', 'tab1'])
         }
-        
+
       }
       // console.log('this.router.url', this.router.url);
-      
-    
-     
-   });
-    
+
+
+
+    });
+
     this.changeDarkMode();
     const lang = await this.dataLocal.getLang() || this.translate.getDefaultLang()
     this.translate.use(lang)
   }
 
-  setPush(){
+  setPush() {
 
-    
+
     this.oneSignal.startInit('7051f6b9-2cb7-4bc8-942e-300a05bedf32', '1071676804015');
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
 
     this.oneSignal.handleNotificationReceived().subscribe(async data => {
-      if(!data?.payload?.additionalData) return
+      if (!data?.payload?.additionalData) return
 
       const additionalData = data.payload.additionalData;
       const title = await this.translate.get(additionalData.title).toPromise();
@@ -84,31 +87,31 @@ export class AppComponent implements OnInit{
       const update = await this.translate.get(additionalData.update ?? '').toPromise()
       const newVersion = await this.translate.get(additionalData.newVersion ?? '').toPromise()
       const msg = newVersion + ' ' + version;
-      const task = {version, update, newVersion}
+      const task = { version, update, newVersion }
       await this.showAlert(title, msg, task)
     });
 
 
     this.oneSignal.handleNotificationOpened().subscribe(async data => {
-      if(!data?.notification?.payload?.additionalData) return
+      if (!data?.notification?.payload?.additionalData) return
 
-      
+
       const additionalData = data.notification.payload.additionalData;
       const title = await this.translate.get(additionalData.title).toPromise();
       const version = additionalData.version ?? ''
       const update = await this.translate.get(additionalData.update ?? '').toPromise()
       const newVersion = await this.translate.get(additionalData.newVersion ?? '').toPromise()
       const msg = newVersion + ' ' + version;
-      const task = {version, update, newVersion}
+      const task = { version, update, newVersion }
       await this.showAlert(title, msg, task)
 
 
     });
-  
+
     this.oneSignal.endInit();
   }
 
-  async showAlert(title, msg, task){
+  async showAlert(title, msg, task) {
     const cancelMsg = await this.translate.get('notification.notNow').toPromise()
     const alert = await this.alertController.create({
       header: title,
@@ -117,10 +120,10 @@ export class AppComponent implements OnInit{
         {
           text: cancelMsg,
           role: 'cancel',
-          handler: async () =>{
+          handler: async () => {
             this.oneSignal.clearOneSignalNotifications()
             await alert.dismiss()
-            
+
           }
         },
         {
@@ -135,43 +138,44 @@ export class AppComponent implements OnInit{
     await alert.present();
   }
 
-  async changeDarkMode(){
+  async changeDarkMode() {
 
     const darkMode = await this.dataLocal.recuperarModoOscuro()
-    document.body.classList.add(darkMode ? 'dark' : 'light')
-     }
+    if(darkMode) document.body.classList.add('dark');
+    // document.body.classList.add(darkMode ? 'dark' : '')
+  }
 
-     async presentAlertConfirm() {
+  async presentAlertConfirm() {
 
-      const exitTrans = await this.translate.get('closeApp.exit').toPromise()
-      const exitQuestionTrans = await this.translate.get('closeApp.exitApp').toPromise()
-      const cacelTrans = await this.translate.get('closeApp.cancel').toPromise()
-  
-
+    const exitTrans = await this.translate.get('closeApp.exit').toPromise()
+    const exitQuestionTrans = await this.translate.get('closeApp.exitApp').toPromise()
+    const cacelTrans = await this.translate.get('closeApp.cancel').toPromise()
 
 
-      
-      const alert = await this.alertController.create({
-        header: exitTrans,
-        message: exitQuestionTrans,
-        buttons: [
-          {
-            text: cacelTrans,
-            role: 'cancel',
-            cssClass: 'secondary',
-          }, {
-            text: exitTrans,
-            cssClass: 'exit-button',
-            handler: () => {
-              console.log('Confirm Okay');
-              navigator['app'].exitApp();
-            }
+
+
+
+    const alert = await this.alertController.create({
+      header: exitTrans,
+      message: exitQuestionTrans,
+      buttons: [
+        {
+          text: cacelTrans,
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: exitTrans,
+          cssClass: 'exit-button',
+          handler: () => {
+            // console.log('Confirm Okay');
+            navigator['app'].exitApp();
           }
-        ]
-      });
-  
-      await alert.present();
-    }
-  
-    
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
 }

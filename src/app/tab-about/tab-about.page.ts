@@ -17,14 +17,15 @@ export class TabAboutPage implements OnInit {
   constructor(private observables: ObservablesService) { }
 
   ngOnInit() {
-    this.observables.setTabTitle(this.tabTitle)
+    // this.observables.setTabTitle(this.tabTitle)
     
   }
 
   ionViewWillEnter(){
     this.observables.setTabTitle(this.tabTitle)
- 
+    this.observables.setShowBackButton(true);
   }
+
 
   navigateWeb(site: string){
     window.open(site, "_system");

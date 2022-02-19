@@ -94,7 +94,7 @@ export class DetalleComponent implements OnInit {
 
   async getTrailer(){
     const result = await this.moviesService.getMovieTrailer(this.id)
-    console.log(result);
+    // console.log(result);
     
     
     let video: Video = null
