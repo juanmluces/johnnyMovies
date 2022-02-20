@@ -1,0 +1,37 @@
+.portrait{
+  margin: auto
+}
+
+.info{
+  background: transparent;
+  ion-item{
+    --background: transparent;
+  }
+  ion-label{
+    margin-left: 1rem;
+  }
+}
+
+.website-button{
+  ion-label{
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.card-actor{
+  &.selected{
+    box-shadow: var(--ion-color-primary) 0px 0px 0px 3px;
+  }
+}
+
+div.spinner-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ion-spinner{
+    transform: scale(2);
+  }
+}

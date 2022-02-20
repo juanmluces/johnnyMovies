@@ -1,7 +1,9 @@
 <ion-slides [ngClass]="flexWrap ? ['swiper-no-swiping', 'wrap-slide'] : []" [options]="slideOpts">
-  <ion-slide *ngFor="let pelicula of peliculas">
-    <ion-card mode="md" (click)="verDetalle(pelicula.id)">
-      <img class="poster" [src]="pelicula.poster_path | imagen" [alt]="pelicula.title">
-    </ion-card>
-  </ion-slide>
+  <ng-container  *ngFor="let pelicula of peliculas">
+    <ion-slide *ngIf="pelicula.poster_path">
+      <ion-card mode="md" (click)="verDetalle(pelicula.id)">
+        <img class="poster" [src]="pelicula.poster_path | imagen" [alt]="pelicula.title">
+      </ion-card>
+    </ion-slide>
+  </ng-container>
 </ion-slides>

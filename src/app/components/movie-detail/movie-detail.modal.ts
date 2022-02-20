@@ -3,13 +3,15 @@ import { ModalController } from '@ionic/angular';
 import { Cast, Crew, PeliculaDetalle, Video } from 'src/app/interfaces/interfaces';
 import { DataLocalService } from 'src/app/services/data-local.service';
 import { MoviesService } from 'src/app/services/movies.service';
+import { PeopleApiService } from 'src/app/services/people-api.service';
+import { PersonDetailModal } from '../person-detail/person-detail.component';
 
 @Component({
   selector: 'app-detalle',
-  templateUrl: './detalle.component.html',
-  styleUrls: ['./detalle.component.scss'],
+  templateUrl: './movie-detail.modal.html',
+  styleUrls: ['./movie-detail.modal.scss'],
 })
-export class DetalleComponent implements OnInit {
+export class MovieDetailModal implements OnInit {
 
   @Input()id;
   pelicula: PeliculaDetalle = {};
@@ -20,7 +22,7 @@ export class DetalleComponent implements OnInit {
   actores: Cast[] = [];
   slideOptActores = {
     slidesPerView: 2.3,
-    freeMode: false,
+    freeMode: true,
     spaceBetween: -5
   }
   slideOptDirectors = {
@@ -31,26 +33,31 @@ export class DetalleComponent implements OnInit {
 
   trailerURL: string = ""
   viewTrailer: boolean = false;
+  pageLoaded = false;
 
   constructor(
     private moviesService: MoviesService, 
     private modalCtrl: ModalController, 
-    private dataLocal: DataLocalService
-    ) { }
-
-   async ngOnInit() {
+    private dataLocal: DataLocalService,
+    private peoples: PeopleApiService
+    ) {
+      this.slideOptActores = {
+        slidesPerView: 2.3,
+        freeMode: false,
+        spaceBetween: -5
+      }
+      this.slideOptDirectors = {
+        slidesPerView: 4,
+        freeMode: false,
+        spaceBetween: -5
+      }
+    }
+    
+    async ngOnInit() {
+     await this.modalCtrl.dismiss(null,null,'person-detail').catch(err => {})
     
 
-    this.slideOptActores = {
-      slidesPerView: 2.3,
-      freeMode: false,
-      spaceBetween: -5
-    }
-    this.slideOptDirectors = {
-      slidesPerView: 4,
-      freeMode: false,
-      spaceBetween: -5
-    }
+   
     this.dataLocal.existePelicula(this.id).then(existe => this.favoriteIcon = (existe) ? 'cl-heart': 'cl-heart-outline')
     
 
@@ -74,6 +81,11 @@ export class DetalleComponent implements OnInit {
       this.trailerURL = await this.getTrailer()
     
       
+  }
+
+  ionViewDidEnter() {
+    this.pageLoaded = true;
+    
   }
 
   getDirectors(crew: Crew[]){
@@ -108,6 +120,28 @@ export class DetalleComponent implements OnInit {
       if(video.site && video.site.toLowerCase() == "youtube") return url
       return  ''
     }
+  }
+
+  // async getActorDetail(actorId: number){
+  //   console.log(actorId);
+  //   const actorData = await this.peoples.getActorDetail(actorId);
+  //   console.log({actorData});
+  // }
+
+  async getActorDetail(id:number){
+    // const dismissFirstModal = () => {
+    //   modal.dismiss();
+    // };
+    const modal = await  this.modalCtrl.create({
+      component: PersonDetailModal,
+      cssClass: 'detallesClass',
+      id: 'person-detail',
+      componentProps: {
+        id
+      }
+    });
+
+    await modal.present();
   }
 
 }

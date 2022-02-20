@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { ObservablesService } from 'src/app/services/observables.service';
-import { DetalleComponent } from '../../components/detalle/detalle.component';
+import { MovieDetailModal } from '../../components/movie-detail/movie-detail.modal';
 import { Pelicula } from '../../interfaces/interfaces';
 import { MoviesService } from '../../services/movies.service';
 
@@ -86,7 +86,8 @@ export class Tab2Page implements OnInit {
 
   async verDetalle(id:number){
     const modal = await  this.modalCtrl.create({
-      component: DetalleComponent,
+      component: MovieDetailModal,
+      id: "movie-detail",
       componentProps: {
         id
       }

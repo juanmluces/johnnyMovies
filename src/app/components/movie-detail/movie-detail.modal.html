@@ -86,8 +86,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-slides [options]="slideOptDirectors">
+  
+  <ion-slides *ngIf="pageLoaded" [options]="slideOptDirectors">
     <ion-slide  *ngFor="let director of directors">
           <ion-label color="primary">{{ director }}</ion-label>
     </ion-slide>
@@ -103,8 +103,8 @@
     </ion-row>
   </ion-grid>
 
-  <ion-slides [options]="slideOptActores">
-    <ion-slide *ngFor="let actor of actores">
+  <ion-slides *ngIf="pageLoaded" [options]="slideOptActores">
+    <ion-slide  (click)="getActorDetail(actor.id)" *ngFor="let actor of actores">
       <ion-card class="card-actor">
         <img *ngIf="!actor.profile_path" class="no-image" src="/assets/no-avatar.jpg">
         <img *ngIf="actor.profile_path" [src]="actor.profile_path | imagen">

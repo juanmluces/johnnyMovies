@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Pelicula } from 'src/app/interfaces/interfaces';
-import { DetalleComponent } from '../detalle/detalle.component';
+import { MovieDetailModal } from '../movie-detail/movie-detail.modal';
 
 @Component({
   selector: 'app-slideshow-backdrop',
@@ -35,8 +35,9 @@ export class SlideshowBackdropComponent implements OnInit {
 
   async verDetalle(id:number){
     const modal = await  this.modalCtrl.create({
-      component: DetalleComponent,
+      component: MovieDetailModal,
       cssClass: 'detallesClass',
+      id:"movie-detail",
       componentProps: {
         id
       }

@@ -30,6 +30,18 @@
     color: var( --ion-color-secondary)
 }
 
+ion-item{
+    &.transparent{
+        --background: transparent;
+    }
+}
+
+ion-card{
+    &.transparent{
+        background: transparent;
+    }
+}
+
 
 // .poster{
     // width: 110px !important;

@@ -15,7 +15,7 @@ export class Tab1Page implements OnInit {
   populares: Pelicula[]= [];
 
   tabTitle = 'header.movies'
-
+  pageLoaded = false;
   spinnerLoading: boolean = true;
   
 
@@ -35,8 +35,12 @@ export class Tab1Page implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.observables.setTabTitle(this.tabTitle)
- 
+    this.observables.setTabTitle(this.tabTitle);
+    
+  }
+
+  ionViewDidEnter() {
+    this.pageLoaded = true;
   }
 
   async cargarMas(){

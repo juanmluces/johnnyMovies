@@ -18,7 +18,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <app-slideshow-poster [peliculas]="peliculasRecientes"></app-slideshow-poster>
+  <app-slideshow-poster *ngIf="pageLoaded" [peliculas]="peliculasRecientes"></app-slideshow-poster>
   <ion-grid fixed>
     <ion-row>
       <ion-col>
@@ -26,6 +26,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <app-slideshow-pares (cargarMas)="cargarMas()" [spinnerLoading]="spinnerLoading" [peliculas]="populares"></app-slideshow-pares>
+  <app-slideshow-pares  *ngIf="pageLoaded"  (cargarMas)="cargarMas()" [spinnerLoading]="spinnerLoading" [peliculas]="populares"></app-slideshow-pares>
 
 </ion-content>

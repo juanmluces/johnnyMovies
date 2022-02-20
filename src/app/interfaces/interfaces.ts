@@ -127,3 +127,61 @@ export interface RespuestaMDB {
     id: string;
   }
   
+
+  export interface PersonDetail {
+    birthday: string;
+    known_for_department: string;
+    deathday?: any;
+    id: number;
+    name: string;
+    also_known_as: string[];
+    gender: number;
+    biography: string;
+    popularity: number;
+    place_of_birth: string;
+    profile_path: string;
+    adult: boolean;
+    imdb_id: string;
+    homepage?: any;
+    images: PersonImages;
+    movie_credits: MovieCredits;
+    status_code?: number;
+  }
+
+  export interface PersonImages {
+    profiles: Profile[];
+  }
+  
+  export interface Profile {
+    aspect_ratio: number;
+    height: number;
+    iso_639_1?: any;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }
+
+  export interface MovieCredits {
+    cast: PeopleDetailCast[];
+  }
+  
+  export interface PeopleDetailCast {
+    adult: boolean;
+    backdrop_path?: string;
+    genre_ids: number[];
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    poster_path?: string;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+    popularity: number;
+    character: string;
+    credit_id: string;
+    order: number;
+  }

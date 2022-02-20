@@ -4,6 +4,8 @@ import { ImagenPipe } from './imagen.pipe';
 import { ParesPipe } from './pares.pipe';
 import { FiltroImagenPipe } from './filtro-imagen.pipe';
 import { SafeURLPipe } from "./safe-url.pipe";
+import { DateReadablePipe } from './date-readable.pipe';
+import { AgePipe } from './age.pipe';
 
 
 
@@ -12,13 +14,17 @@ import { SafeURLPipe } from "./safe-url.pipe";
     ImagenPipe,
     ParesPipe,
     FiltroImagenPipe,
-    SafeURLPipe
+    SafeURLPipe,
+    DateReadablePipe,
+    AgePipe
   ],
   exports: [
     ImagenPipe,
     ParesPipe,
     FiltroImagenPipe,
-    SafeURLPipe
+    SafeURLPipe,
+    DateReadablePipe,
+    AgePipe
   ],
   imports: [
     CommonModule

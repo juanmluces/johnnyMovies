@@ -5,8 +5,9 @@ import { IonicModule } from '@ionic/angular';
 import { PipesModule } from '../pipes/pipes.module';
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { SlideshowParesComponent } from './slideshow-pares/slideshow-pares.component';
-import { DetalleComponent } from './detalle/detalle.component';
+import { MovieDetailModal } from './movie-detail/movie-detail.modal';
 import { TranslateModule } from '@ngx-translate/core';
+import { PersonDetailModal } from './person-detail/person-detail.component';
 
 
 
@@ -15,13 +16,15 @@ import { TranslateModule } from '@ngx-translate/core';
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
     SlideshowParesComponent,
-    DetalleComponent
+    MovieDetailModal,
+    PersonDetailModal
   ],
   exports: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
     SlideshowParesComponent,
-    DetalleComponent
+    MovieDetailModal,
+    PersonDetailModal
   ],
   imports: [
     CommonModule,
