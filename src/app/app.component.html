@@ -7,15 +7,15 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item  lines="none" routerLink="movies" (click)="sideMenu.close()">
-          <ion-icon class="list-icon" color="dark" name="cl-movies"></ion-icon>
-          <ion-label>{{"tabs.movies" | translate}}</ion-label>
+        <ion-item  lines="none"  (click)="navigate('movies',sideMenu)">
+          <ion-icon class="list-icon" color="dark" name="cl-home"></ion-icon>
+          <ion-label>{{"tabs.home" | translate}}</ion-label>
         </ion-item>
-          <ion-item  lines="none" routerLink="tab-settings" (click)="sideMenu.close()">
+          <ion-item  lines="none"  (click)="navigate('tab-settings',sideMenu)">
             <ion-icon class="list-icon" color="dark" name="cl-settings"></ion-icon>
             <ion-label>{{"tabs.settings" | translate}}</ion-label>
           </ion-item>
-          <ion-item  lines="none" routerLink="tab-about" (click)="sideMenu.close()">
+          <ion-item  lines="none" (click)="navigate('tab-about',sideMenu)">
             <ion-icon class="list-icon" color="dark" name="help-circle-outline"></ion-icon>
             <ion-label>{{"tabs.about" | translate}}</ion-label>
           </ion-item>

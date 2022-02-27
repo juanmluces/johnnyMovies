@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ObservablesService } from 'src/app/services/observables.service';
 import { Pelicula, RespuestaMDB } from '../../interfaces/interfaces';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'tab-home',
+  templateUrl: 'tab-home.page.html',
+  styleUrls: ['tab-home.page.scss']
 })
-export class Tab1Page implements OnInit {
+export class TabHomePage implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
   populares: Pelicula[]= [];

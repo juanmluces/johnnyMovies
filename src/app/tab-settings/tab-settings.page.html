@@ -11,9 +11,14 @@
   <ion-list  lines="none">
     <ion-item>
       <ion-label>
-        {{'tab-settings.darkMode' |translate}}
+        {{'tab-settings.theme' |translate}}
       </ion-label>
-      <ion-toggle slot="end" [(ngModel)]="darkMode" (ionChange)="changeMode()"></ion-toggle>
+      <ion-select [cancelText]="'tab-settings.cancel' | translate" (ionChange)="changeTheme($event)" [value]="theme" interface="action-sheet">
+        <ion-select-option [value]="themesEnum.LightWhite">{{'tab-settings.lightCloud' | translate}}</ion-select-option>
+        <ion-select-option [value]="themesEnum.DarkBlue">{{'tab-settings.darkOcean' | translate}}</ion-select-option> 
+        <ion-select-option [value]="themesEnum.DarkGreen">{{'tab-settings.darkForest' | translate}}</ion-select-option>
+      </ion-select>
+      <!-- <ion-toggle slot="end" [(ngModel)]="darkMode" (ionChange)="changeMode()"></ion-toggle> -->
     </ion-item>
     <ion-item>
       <ion-label>
@@ -25,7 +30,7 @@
       <ion-label>
         {{'tab-settings.changeLang' | translate}}
       </ion-label>
-    <ion-select [value]="translate.currentLang" (ionChange)="changeLang($event)" [placeholder]="'tab-settings.selectLang' | translate" okText="Ok" [cancelText]="'tab-settings.cancel' | translate">
+    <ion-select interface="action-sheet" [value]="translate.currentLang" (ionChange)="changeLang($event)" [placeholder]="'tab-settings.selectLang' | translate" okText="Ok" [cancelText]="'tab-settings.cancel' | translate" >
       <ion-select-option value="es">{{'tab-settings.spanish' |translate}}</ion-select-option>
       <ion-select-option value="en">{{'tab-settings.english' |translate}}</ion-select-option>
     </ion-select>

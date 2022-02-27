@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CloseModalGuard } from '../../services/close-modal-guard';
-import { Tab2Page } from './tab2.page';
+import { TabSearchPage } from './tab-search.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: Tab2Page,
+    component: TabSearchPage,
     canDeactivate: [CloseModalGuard]
   }
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class Tab2PageRoutingModule {}
+export class TabSearchRoutingModule {}

@@ -25,7 +25,11 @@
         <h3>{{ 'tab1.popular' | translate }}</h3>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <app-slideshow-pares  *ngIf="pageLoaded"  (cargarMas)="cargarMas()" [spinnerLoading]="spinnerLoading" [peliculas]="populares"></app-slideshow-pares>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-  <app-slideshow-pares  *ngIf="pageLoaded"  (cargarMas)="cargarMas()" [spinnerLoading]="spinnerLoading" [peliculas]="populares"></app-slideshow-pares>
 
 </ion-content>

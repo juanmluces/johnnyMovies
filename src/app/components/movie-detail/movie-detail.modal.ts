@@ -15,7 +15,7 @@ export class MovieDetailModal implements OnInit {
 
   @Input()id;
   pelicula: PeliculaDetalle = {};
-  directors:  Array<string> = [];
+  director:  Crew = null;
   oculto: boolean = true;
   limiteOculto = 150;
   favoriteIcon = 'cl-heart-outline'
@@ -73,7 +73,7 @@ export class MovieDetailModal implements OnInit {
      
        
         this.actores = resp.cast;
-        if(resp.crew) this.directors = this.getDirectors(resp.crew)
+        if(resp.crew) this.director = this.getDirector(resp.crew)
         
         
         
@@ -88,12 +88,10 @@ export class MovieDetailModal implements OnInit {
     
   }
 
-  getDirectors(crew: Crew[]){
-    const dir = []
-    crew.forEach(member => {
-      if(member.department == "Directing") dir.push(member.name)
-    })
-    return dir
+  getDirector(crew: Crew[]): Crew{
+   
+    const director = crew.find(member => member.job === 'Director')
+    return director;
   }
 
   regresar(){

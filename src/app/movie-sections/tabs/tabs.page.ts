@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Themes } from 'src/app/interfaces/enums';
 import { DataLocalService } from '../../services/data-local.service';
 import { ObservablesService } from '../../services/observables.service';
 
@@ -9,14 +10,14 @@ import { ObservablesService } from '../../services/observables.service';
 })
 export class TabsPage implements OnInit {
 
-  darkMode: boolean = false;
+  theme: Themes = Themes.DarkBlue;
   tabTitle = 'header.movies'
 
   constructor(private dataLocal: DataLocalService, private observables: ObservablesService) {
   }
   
   async ngOnInit(){
-    this.darkMode = await this.dataLocal.recuperarModoOscuro()
+    this.theme = await this.dataLocal.recuperarModoOscuro()
     this.observables.setTabTitle(this.tabTitle)
  
     

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { Themes } from '../interfaces/enums';
 import { PeliculaDetalle } from '../interfaces/interfaces';
 
 @Injectable({
@@ -62,18 +63,18 @@ export class DataLocalService {
     return !existe
   }
 
-  guardarModoOscuro(isDarkMode: boolean): boolean{
+  guardarModoOscuro(theme: Themes): Themes{
 
-    this._storage.set('oscuro', isDarkMode)
-    return isDarkMode
+    this._storage.set('theme', theme)
+    return theme
 
   }
 
-  async recuperarModoOscuro(): Promise<boolean>{
+  async recuperarModoOscuro(): Promise<Themes>{
     if(!this._storage) await this.init()
-    const modoOscuro = await this._storage.get('oscuro') ?? true;
+    const theme = await this._storage.get('theme') ?? Themes.LightWhite;
     
-    return modoOscuro
+    return theme
   }
 
 

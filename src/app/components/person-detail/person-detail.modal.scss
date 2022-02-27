@@ -1,3 +1,5 @@
+
+
 .portrait{
   margin: auto
 }
@@ -10,6 +12,10 @@
   ion-label{
     margin-left: 1rem;
   }
+}
+
+.person-department{
+  pointer-events: none;
 }
 
 .website-button{
@@ -34,4 +40,8 @@ div.spinner-container{
   ion-spinner{
     transform: scale(2);
   }
+}
+
+.slideshow-col{
+  margin-bottom: 2rem;
 }

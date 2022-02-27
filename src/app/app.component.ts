@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { AlertController, Platform } from '@ionic/angular';
+import { AlertController, IonMenu, NavController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Themes } from './interfaces/enums';
 import { DataLocalService } from './services/data-local.service';
 import { ObservablesService } from './services/observables.service';
 
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
     public alertController: AlertController,
     private observables: ObservablesService,
     private router: Router,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    private navCtrl: NavController
   ) {
     this.initializeApp();
     this.translate.setDefaultLang('es')
@@ -66,7 +68,7 @@ export class AppComponent implements OnInit {
 
     });
 
-    this.changeDarkMode();
+    this.changeTheme();
     const lang = await this.dataLocal.getLang() || this.translate.getDefaultLang()
     this.translate.use(lang)
   }
@@ -138,10 +140,12 @@ export class AppComponent implements OnInit {
     await alert.present();
   }
 
-  async changeDarkMode() {
+  async changeTheme() {
 
-    const darkMode = await this.dataLocal.recuperarModoOscuro()
-    if(darkMode) document.body.classList.add('dark');
+    const theme = await this.dataLocal.recuperarModoOscuro();
+    this.selectTheme(theme);
+
+    // if(darkMode) document.body.classList.add('dark');
     // document.body.classList.add(darkMode ? 'dark' : '')
   }
 
@@ -175,6 +179,22 @@ export class AppComponent implements OnInit {
     });
 
     await alert.present();
+  }
+
+  selectTheme(theme: Themes):void{
+    if(theme === Themes.DarkBlue){
+      document.body.classList.remove('green');
+      document.body.classList.add('dark');
+      return
+    }
+    if(theme === Themes.LightWhite) return document.body.classList.remove('dark', 'green');
+    if(theme === Themes.DarkGreen) return document.body.classList.add('dark', 'green');
+
+  }
+
+  async navigate(route: string, sidemenu:IonMenu){
+    await sidemenu.close()
+    this.navCtrl.navigateForward(route)
   }
 
 

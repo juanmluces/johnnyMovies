@@ -128,6 +128,7 @@ export interface RespuestaMDB {
   }
   
 
+  
   export interface PersonDetail {
     birthday: string;
     known_for_department: string;

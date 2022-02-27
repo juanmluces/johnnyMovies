@@ -41,6 +41,7 @@ export class PersonDetailModal implements OnInit {
   async getPersonDetail(){
     const detail = await this.peoples.getActorDetail(this.id);
     if(!detail || detail.status_code) this.modalCtrl.dismiss();
+    if(detail.images?.profiles?.length > 4) detail.images.profiles.length = 4;
     this.person = detail;
     this.selectedUrl = this.person.profile_path;
     console.log(detail);

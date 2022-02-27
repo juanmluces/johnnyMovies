@@ -6,11 +6,11 @@ import { DataLocalService } from '../../services/data-local.service';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'tab-favorite',
+  templateUrl: 'tab-favorite.page.html',
+  styleUrls: ['tab-favorite.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class TabFavoritePage implements OnInit {
 
   peliculas: PeliculaDetalle[] = [];
   generos: Genre[];

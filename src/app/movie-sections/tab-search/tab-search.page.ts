@@ -9,10 +9,10 @@ import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  templateUrl: 'tab-search.page.html',
+  styleUrls: ['tab-search.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class TabSearchPage implements OnInit {
 
 
   colSize = 6

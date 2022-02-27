@@ -3,7 +3,7 @@
     "movies": "Movies"
     },
     "tabs": {
-        "movies": "Movies",
+        "home": "Home",
         "search": "Search",
         "favorite": "Favorite",
         "settings": "Settings",
@@ -36,6 +36,10 @@
     "tab-settings": {
         "settings": "Settings",
         "darkMode": "Dark Mode",
+        "theme": "Theme",
+        "lightCloud": "Light Cloud",
+        "darkOcean": "Dark Ocean",
+        "darkForest": "Dark Forest",
         "showFavGender": "Show Favorite by genres",
         "changeLang": "Change language",
         "spanish": "Spanish",

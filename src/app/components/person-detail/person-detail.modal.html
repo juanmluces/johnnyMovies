@@ -90,8 +90,8 @@
     </ion-row>
     <ion-row>
       <ion-col  *ngIf="person?.known_for_department" size="12">
-        <ion-chip>
-          <ion-label>{{person?.known_for_department}}</ion-label>
+        <ion-chip class="person-department">
+          <ion-label>{{person.known_for_department}}</ion-label>
         </ion-chip>
       </ion-col>
     </ion-row>
@@ -105,8 +105,12 @@
         <ion-label>{{'Movies' | translate}}</ion-label>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col class="slideshow-col" size="12">
+        <app-slideshow-poster  [peliculas]="person.movie_credits.cast"></app-slideshow-poster>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-  <app-slideshow-poster  [peliculas]="person.movie_credits.cast"></app-slideshow-poster>
 </ng-container>
   
 </ion-content>
