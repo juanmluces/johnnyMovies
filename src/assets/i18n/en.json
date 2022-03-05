@@ -37,6 +37,9 @@
         "settings": "Settings",
         "darkMode": "Dark Mode",
         "theme": "Theme",
+        "theme0" : "Light Cloud",
+        "theme1" : "Dark Ocean",
+        "theme2" : "Dark Forest",
         "lightCloud": "Light Cloud",
         "darkOcean": "Dark Ocean",
         "darkForest": "Dark Forest",
@@ -45,7 +48,11 @@
         "spanish": "Spanish",
         "english": "English",
         "selectLang":"Select language",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "chooseLanguage": "Choose your language",
+        "chooseTheme": "Choose a theme",
+        "es": "Spanish",
+        "en": "English"
     },
     "tab-about": {
         "appInfo": "App Info",

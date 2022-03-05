@@ -38,6 +38,9 @@
         "settings": "Ajustes",
         "darkMode": "Modo Oscuro",
         "theme": "Tema",
+        "theme0" : "Nube Clara",
+        "theme1" : "Océano Oscuro",
+        "theme2" : "Bosque Oscuro",
         "lightCloud": "Nube Clara",
         "darkOcean": "Océano Oscuro",
         "darkForest": "Bosque Oscuro",
@@ -46,7 +49,11 @@
         "spanish": "Español",
         "english": "Inglés",
         "selectLang":"Elige un idioma",
-        "cancel": "Cacelar"
+        "cancel": "Cancelar",
+        "chooseLanguage": "Elige tu idioma",
+        "chooseTheme": "Elige un tema",
+        "es": "Español",
+        "en": "Inglés"
     },
     "tab-about": {
         "appInfo": "Aplicación",

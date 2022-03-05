@@ -15,7 +15,7 @@ export class DataLocalService {
 
   constructor(private storage: Storage, private toastCtr: ToastController) {
     this.init();
-    this.cargarFavoritos();
+    this.getFavorites();
    }
 
 
@@ -63,22 +63,22 @@ export class DataLocalService {
     return !existe
   }
 
-  guardarModoOscuro(theme: Themes): Themes{
+  saveTheme(theme: Themes): Themes{
 
     this._storage.set('theme', theme)
     return theme
 
   }
 
-  async recuperarModoOscuro(): Promise<Themes>{
+  async getTheme(): Promise<Themes>{
     if(!this._storage) await this.init()
-    const theme = await this._storage.get('theme') ?? Themes.LightWhite;
+    const theme = await this._storage.get('theme') ?? Themes.LightCloud;
     
     return theme
   }
 
 
-  async cargarFavoritos(){
+  async getFavorites(){
 
     if(!this._storage) await this.init()
     const peliculas  = await this._storage.get('peliculas');
@@ -87,22 +87,22 @@ export class DataLocalService {
 
   }
 
- async  existePelicula(id){
+ async  movieExists(id){
 
-    await this.cargarFavoritos();
+    await this.getFavorites();
     const existe = this.peliculas.find(peli => peli.id == id);
     return (existe) ? true: false;
   }
 
-  guardarMostrarGeneros(mostrarGeneros: boolean){
+  setShowGenres(showGenres: boolean){
 
-    this._storage.set('mostrarGeneros', mostrarGeneros)
+    this._storage.set('showGenres', showGenres)
   }
 
-  async recuperarMostrarGeneros(){
+  async getShowGenres(){
     if(!this._storage) await this.init()
-    const mostrarGeneros = await this._storage.get('mostrarGeneros');
-    return mostrarGeneros
+    const showGenres = await this._storage.get('showGenres');
+    return showGenres
   }
 
   async getLang(){
@@ -111,7 +111,7 @@ export class DataLocalService {
     return lang
   }
 
-  guardarIdioma(lang: string){
+  setLang(lang: string){
     this._storage.set('lang', lang)
   }
 

@@ -1,5 +1,5 @@
 export enum Themes {
-  DarkBlue,
-  LightWhite,
-  DarkGreen
+  LightCloud,
+  DarkOcean,
+  DarkForest
 }

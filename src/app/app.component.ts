@@ -142,7 +142,7 @@ export class AppComponent implements OnInit {
 
   async changeTheme() {
 
-    const theme = await this.dataLocal.recuperarModoOscuro();
+    const theme = await this.dataLocal.getTheme();
     this.selectTheme(theme);
 
     // if(darkMode) document.body.classList.add('dark');
@@ -182,13 +182,13 @@ export class AppComponent implements OnInit {
   }
 
   selectTheme(theme: Themes):void{
-    if(theme === Themes.DarkBlue){
+    if(theme === Themes.DarkOcean){
       document.body.classList.remove('green');
       document.body.classList.add('dark');
       return
     }
-    if(theme === Themes.LightWhite) return document.body.classList.remove('dark', 'green');
-    if(theme === Themes.DarkGreen) return document.body.classList.add('dark', 'green');
+    if(theme === Themes.LightCloud) return document.body.classList.remove('dark', 'green');
+    if(theme === Themes.DarkForest) return document.body.classList.add('dark', 'green');
 
   }
 

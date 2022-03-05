@@ -10,14 +10,14 @@ import { ObservablesService } from '../../services/observables.service';
 })
 export class TabsPage implements OnInit {
 
-  theme: Themes = Themes.DarkBlue;
+  theme: Themes = Themes.LightCloud;
   tabTitle = 'header.movies'
 
   constructor(private dataLocal: DataLocalService, private observables: ObservablesService) {
   }
   
   async ngOnInit(){
-    this.theme = await this.dataLocal.recuperarModoOscuro()
+    this.theme = await this.dataLocal.getTheme()
     this.observables.setTabTitle(this.tabTitle)
  
     

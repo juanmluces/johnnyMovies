@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,55 +25,62 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
-.color-secondary{
-    color: var( --ion-color-secondary)
+.color-secondary {
+	color: var(--ion-color-secondary);
 }
 
-ion-item{
-    &.transparent{
-        --background: transparent;
-    }
+ion-item {
+	&.transparent {
+		--background: transparent;
+	}
 }
 
-ion-card{
-    &.transparent{
-        background: transparent;
-    }
+ion-card {
+	&.transparent {
+		background: transparent;
+	}
 }
-
 
 // .poster{
-    // width: 110px !important;
-    // height: 160px !important;
+// width: 110px !important;
+// height: 160px !important;
 // }
 
-.swiper-slide{
-
-    img.no-image{
-        width: 150px !important;
-        
-    } 
+.swiper-slide {
+	img.no-image {
+		width: 150px !important;
+	}
 }
 
-.exit-button{
-    color:   var(--ion-color-danger) !important;
+.exit-button {
+	color: var(--ion-color-danger) !important;
 }
 
-ion-slides.wrap-slide{
+ion-slides.wrap-slide {
+	.swiper-wrapper {
+		flex-wrap: wrap;
+	}
+}
+.iconoIdioma {
+	height: 3rem !important;
+	&.first-button {
+		margin-bottom: 0 !important;
+		margin-top: 1rem !important;
+	}
+	&.last-button {
+		margin-bottom: 1rem !important;
+	}
 
-    .swiper-wrapper{
-        flex-wrap: wrap;
-    }
+	ion-icon {
+		margin-right: 1rem !important;
+	}
 }
 
-
-@media(min-width: 1400px){
-
-    .detallesClass{
-        .modal-wrapper{
-            width: 60%;
-            max-width: 1000px;
-        }
-    }
+@media (min-width: 1400px) {
+	.detallesClass {
+		.modal-wrapper {
+			width: 60%;
+			max-width: 1000px;
+		}
+	}
 }

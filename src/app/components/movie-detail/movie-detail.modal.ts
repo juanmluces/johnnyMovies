@@ -58,7 +58,7 @@ export class MovieDetailModal implements OnInit {
     
 
    
-    this.dataLocal.existePelicula(this.id).then(existe => this.favoriteIcon = (existe) ? 'cl-heart': 'cl-heart-outline')
+    this.dataLocal.movieExists(this.id).then(existe => this.favoriteIcon = (existe) ? 'cl-heart': 'cl-heart-outline')
     
 
     this.moviesService.getPeliculaDetalle(this.id)

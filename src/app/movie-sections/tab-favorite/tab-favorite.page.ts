@@ -26,15 +26,15 @@ export class TabFavoritePage implements OnInit {
 
   async ngOnInit(){
     this.observables.setTabTitle(this.tabTitle)
-    this.mostrarGeneros = await this.dataLocal.recuperarMostrarGeneros()
+    this.mostrarGeneros = await this.dataLocal.getShowGenres()
   }
 
   async  ionViewWillEnter(){
     this.observables.setTabTitle(this.tabTitle)
-    this.peliculas = await this.dataLocal.cargarFavoritos()
+    this.peliculas = await this.dataLocal.getFavorites()
     this.generos = await this.moviesService.cargarGeneros();
     this.pelisPorGenero(this.generos, this.peliculas)
-    this.mostrarGeneros = await this.dataLocal.recuperarMostrarGeneros()
+    this.mostrarGeneros = await this.dataLocal.getShowGenres()
   }
 
 
