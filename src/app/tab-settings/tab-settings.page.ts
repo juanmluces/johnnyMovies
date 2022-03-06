@@ -30,12 +30,12 @@ export class TabSettingsPage implements OnInit {
     
     [this.theme, this.mostrarGenero] = await Promise.all([this.dataLocal.getTheme(), this.dataLocal.getShowGenres()])
     this.setTheme(this.theme)
-    this.observables.setTabTitle(this.tabTitle);
-
-
+    
+    
   }
-
+  
   ionViewWillEnter(){
+    this.observables.setTabTitle(this.tabTitle);
     this.observables.setShowBackButton(true);
   }
 

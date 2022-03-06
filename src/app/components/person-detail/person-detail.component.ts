@@ -16,7 +16,7 @@ export class PersonDetailModal implements OnInit {
   limiteOculto = 150;
   slideOpts = {
     slidesPerView: 3.3,
-    freeMode: false,
+    freeMode: true,
   }
   pageLoaded: boolean = false;
   selectedUrl: string;
@@ -29,7 +29,7 @@ export class PersonDetailModal implements OnInit {
     this.showSpinner = true;
     await this.getPersonDetail()
     this.showSpinner = false;
-    await this.modalCtrl.dismiss(null, null, 'movie-detail').catch(err => {})
+    // await this.modalCtrl.dismiss(null, null, 'movie-detail').catch(err => {})
     
   }
 

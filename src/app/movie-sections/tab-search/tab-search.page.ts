@@ -45,10 +45,6 @@ export class TabSearchPage implements OnInit {
   
   async  ionViewWillEnter(){
     this.observables.setTabTitle(this.tabTitle)
-    this.observables.backButton$().subscribe(buttonPressed => {
-      
-      this.backButtonPressed = buttonPressed  
-    })
     this.ideas = []
     this.getExampleMovies()
 
@@ -144,14 +140,14 @@ export class TabSearchPage implements OnInit {
     return
   }
 
-  canDeactivate(){
-    if(this.backButtonPressed && this.textoBuscar){
-      this.textoBuscar = ''
-      this.peliculas = []
-      return false
-    }
-    return true
-  }
+  // canDeactivate(){
+  //   if(this.backButtonPressed && this.textoBuscar){
+  //     this.textoBuscar = ''
+  //     this.peliculas = []
+  //     return false
+  //   }
+  //   return true
+  // }
 
   checkViewport(){
     const width = window.innerWidth

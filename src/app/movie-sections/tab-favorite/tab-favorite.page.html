@@ -10,9 +10,28 @@
       </ion-item>
     </ion-card>
   </div>
+
+  <ion-grid fixed *ngIf="!mostrarGeneros">
+    <ion-row>
+      
+      <ion-col *ngFor="let pelicula of peliculas" [size]="6">
+          <!-- <ion-item  lines="none" > -->
+          <ion-card class="movie-container" (click)="verDetalle(pelicula.id)">
+            <img class="movie-image" [src]="pelicula.poster_path | imagen">
+            <ion-card-header>
+              <ion-card-subtitle>{{pelicula.release_date}}</ion-card-subtitle>
+              <ion-card-content>
+                <h2>{{pelicula.title}}</h2>
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        <!-- </ion-item> -->
+        </ion-col>
+    </ion-row>
+  </ion-grid>
   
  
-  <app-slideshow-poster [flexWrap]="true" class="no-geners" *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster>
+  <!-- <app-slideshow-poster [flexWrap]="true" class="no-geners" *ngIf="!mostrarGeneros" (modalDismissed)="ionViewWillEnter()" [peliculas]="peliculas"></app-slideshow-poster> -->
 
   <ng-container *ngIf="mostrarGeneros">
 

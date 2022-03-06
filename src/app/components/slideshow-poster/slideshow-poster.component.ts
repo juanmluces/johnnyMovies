@@ -16,7 +16,7 @@ export class SlideshowPosterComponent implements OnInit {
     
   slideOpts = {
     slidesPerView: 3.3,
-    freeMode: false,
+    freeMode: true,
   }
 
   @Input() peliculas: PeliculaDetalle[] = []
@@ -38,6 +38,7 @@ export class SlideshowPosterComponent implements OnInit {
   }
 
   async verDetalle(id:number){
+    await this.modalCtrl.dismiss(null, null, 'movie-detail').catch(err => {})
     const modal = await  this.modalCtrl.create({
       component: MovieDetailModal,
       cssClass: 'detallesClass',
@@ -47,7 +48,7 @@ export class SlideshowPosterComponent implements OnInit {
       }
     });
 
-    modal.present()
+    await modal.present()
     this.modalCreated.emit(modal)
     const result = await modal.onDidDismiss()
     if(result.data) this.modalDismissed.emit()

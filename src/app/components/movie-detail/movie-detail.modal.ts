@@ -25,11 +25,7 @@ export class MovieDetailModal implements OnInit {
     freeMode: true,
     spaceBetween: -5
   }
-  slideOptDirectors = {
-    slidesPerView: 4,
-    freeMode: true,
-    spaceBetween: -5
-  }
+ 
 
   trailerURL: string = ""
   viewTrailer: boolean = false;
@@ -40,18 +36,7 @@ export class MovieDetailModal implements OnInit {
     private modalCtrl: ModalController, 
     private dataLocal: DataLocalService,
     private peoples: PeopleApiService
-    ) {
-      this.slideOptActores = {
-        slidesPerView: 2.3,
-        freeMode: false,
-        spaceBetween: -5
-      }
-      this.slideOptDirectors = {
-        slidesPerView: 4,
-        freeMode: false,
-        spaceBetween: -5
-      }
-    }
+    ) {}
     
     async ngOnInit() {
      await this.modalCtrl.dismiss(null,null,'person-detail').catch(err => {})

@@ -77,4 +77,9 @@ export class SlideshowBackdropComponent implements OnInit {
     
   }
 
+  hold(event){
+    console.log(event);
+    
+  }
+
 }

@@ -34,15 +34,6 @@ export class ObservablesService {
     this.tabTitle = title
     this.tabTitle$.next(title)
   }
-
-  backButtonPressed(press:boolean){
-    this.backButtonEvent$.next(press)
-  }
-
-  
-  backButton$(): Observable<boolean>{
-    return this.backButtonEvent$.asObservable()
-  }
-  
+ 
   
 }

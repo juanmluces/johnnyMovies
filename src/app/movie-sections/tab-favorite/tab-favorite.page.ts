@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { MovieDetailModal } from 'src/app/components/movie-detail/movie-detail.modal';
 import { ObservablesService } from 'src/app/services/observables.service';
 import { Genre, PeliculaDetalle } from '../../interfaces/interfaces';
 import { DataLocalService } from '../../services/data-local.service';
@@ -22,7 +24,8 @@ export class TabFavoritePage implements OnInit {
   constructor(
     private dataLocal: DataLocalService, 
     private moviesService: MoviesService, 
-    private observables: ObservablesService) {}
+    private observables: ObservablesService,
+    private modalCtrl: ModalController) {}
 
   async ngOnInit(){
     this.observables.setTabTitle(this.tabTitle)
@@ -53,6 +56,23 @@ export class TabFavoritePage implements OnInit {
     })
   }
 
- 
+  async verDetalle(id:number){
+    await this.modalCtrl.dismiss(null, null, 'movie-detail').catch(err => {})
+    const modal = await  this.modalCtrl.create({
+      component: MovieDetailModal,
+      cssClass: 'detallesClass',
+      id:"movie-detail",
+      componentProps: {
+        id
+      }
+    });
+
+    await modal.present()
+    // this.modalCreated.emit(modal)
+    const result = await modal.onDidDismiss()
+    // if(result.data) this.modalDismissed.emit()
+   
+  }
+
 
 }

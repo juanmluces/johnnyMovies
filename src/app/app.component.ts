@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { AlertController, IonMenu, NavController, Platform } from '@ionic/angular';
+import { AlertController, IonMenu, ModalController, NavController, Platform } from '@ionic/angular';
+import { NavigationOptions } from '@ionic/angular/providers/nav-controller';
 import { TranslateService } from '@ngx-translate/core';
 import { Themes } from './interfaces/enums';
 import { DataLocalService } from './services/data-local.service';
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
 
   tabTitle: string;
   backButton: boolean;
+  @ViewChild('sideMenu') sideMenu: IonMenu;
 
 
   constructor(
@@ -28,7 +30,9 @@ export class AppComponent implements OnInit {
     private observables: ObservablesService,
     private router: Router,
     private oneSignal: OneSignal,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private modalController: ModalController,
+    private ngZone: NgZone
   ) {
     this.initializeApp();
     this.translate.setDefaultLang('es')
@@ -48,24 +52,14 @@ export class AppComponent implements OnInit {
       this.setPush()
     }
 
-    this.platform.backButton.subscribeWithPriority(0, async () => {
-   
-
-      this.observables.backButtonPressed(true)
-      setTimeout(() => { this.observables.backButtonPressed(false) }, 0)
-      const url = this.router.url
-      if (url.includes("/movies/")) {
-        if (this.router.url == "/movies/tab1") {
-          await this.presentAlertConfirm()
-        } else {
-          await this.router.navigate(['movies', 'tab1'])
-        }
-
-      }
-      // console.log('this.router.url', this.router.url);
-
-
-
+    this.platform.backButton.subscribeWithPriority(9999, async () => {
+      const url = this.router.url  
+      if(await this.sideMenu.isOpen()) return await this.sideMenu.close();     
+      if(await this.modalController.getTop()) return await this.modalController.dismiss();
+      if (url == "/movies/tab-home") return await this.presentAlertConfirm();
+      // if(url.includes('movies'))  await this.ngZone.run(async ()=> await this.navCtrl.navigateRoot(""));
+      return await this.ngZone.run(async ()=> await this.navCtrl.navigateBack(""));
+    
     });
 
     this.changeTheme();

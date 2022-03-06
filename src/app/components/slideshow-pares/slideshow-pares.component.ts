@@ -16,7 +16,7 @@ export class SlideshowParesComponent implements OnInit {
 
   slideOpts = {
     slidesPerView: 3.3,
-    freeMode: false,
+    freeMode: true,
     spaceBetween: -10
   }
 

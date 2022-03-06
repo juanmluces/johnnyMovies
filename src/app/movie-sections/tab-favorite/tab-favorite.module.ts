@@ -8,6 +8,7 @@ import { TabFavoritePage } from './tab-favorite.page';
 import { TabFavoritePageRoutingModule } from './tab-favorite-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule.forChild([{ path: '', component: TabFavoritePage }]),
     TabFavoritePageRoutingModule,
     ComponentsModule,
-    TranslateModule
+    TranslateModule,
+    PipesModule
   ],
   declarations: [TabFavoritePage]
 })
