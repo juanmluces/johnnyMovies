@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
   }
 
   async initializeApp() {
-    this.isPWA = this.platform.is('pwa') || this.platform.is('mobileweb');
+    this.isPWA = this.platform.is('pwa') || this.platform.is('mobileweb') || this.platform.is('desktop');
     
     if (this.platform.is('cordova')) {
       this.setPush()
