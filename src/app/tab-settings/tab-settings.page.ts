@@ -85,6 +85,7 @@ export class TabSettingsPage implements OnInit {
       cssClass: "themeActionSheet",
       header: this.translate.instant("tab-settings.chooseTheme"),
       subHeader:  this.translate.instant("tab-settings.theme" + this.theme),
+      mode: 'md',
       buttons: [
         {
           cssClass: "iconoIdioma first-button",
@@ -116,6 +117,7 @@ export class TabSettingsPage implements OnInit {
       cssClass: "cssIdioma",
       header: this.translate.instant("tab-settings.chooseLanguage"),
       subHeader:  this.translate.instant("tab-settings." + this.translate.currentLang),
+      mode: 'md',
       buttons: [
         {
           cssClass: "iconoIdioma first-button",

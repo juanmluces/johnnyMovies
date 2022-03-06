@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   tabTitle: string;
   backButton: boolean;
+  isPWA: boolean;
   @ViewChild('sideMenu') sideMenu: IonMenu;
 
 
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit {
     private oneSignal: OneSignal,
     private navCtrl: NavController,
     private modalController: ModalController,
-    private ngZone: NgZone
+    private ngZone: NgZone  
   ) {
     this.initializeApp();
     this.translate.setDefaultLang('es')
@@ -47,7 +48,8 @@ export class AppComponent implements OnInit {
   }
 
   async initializeApp() {
-
+    this.isPWA = this.platform.is('pwa') || this.platform.is('mobileweb');
+    
     if (this.platform.is('cordova')) {
       this.setPush()
     }

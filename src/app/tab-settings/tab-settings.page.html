@@ -18,7 +18,7 @@
       <ion-label>
         {{'tab-settings.changeLang' | translate}}
       </ion-label>
-      <ion-button (click)="selectLanguage()" fill="clear" color="primary" class="lang-button">{{translate.currentLang}}</ion-button>
+      <ion-button (click)="selectLanguage()" fill="clear" color="primary" class="lang-button">{{translate.currentLang | uppercase}}</ion-button>
     </ion-item>
   </ion-list>
 
