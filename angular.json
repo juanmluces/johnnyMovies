@@ -77,10 +77,10 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.codinglights.ts"
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "/app/johnny-movies/",
+              "baseHref": "/johnny-movies/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

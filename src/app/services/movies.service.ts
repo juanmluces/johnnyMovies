@@ -57,10 +57,10 @@ export class MoviesService {
   }
 
   getPeliculaDetalle(id: string){
-    return this.ejecutarQuery<PeliculaDetalle>(`/movie/${id}?a=1`)
+    return this.ejecutarQuery<PeliculaDetalle>(`movie/${id}?a=1`)
   }
   getActoresPelicula(id: string){
-    return this.ejecutarQuery<RespuestaCredits>(`/movie/${id}/credits?a=1`)
+    return this.ejecutarQuery<RespuestaCredits>(`movie/${id}/credits?a=1`)
   }
 
   buscarPeliculas( texto: string){
